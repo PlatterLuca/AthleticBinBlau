@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="logo.png" type="image/png">
+    <title>Athletic Binblau | Team</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="index.html" class="logo">
+            <img src="logo.png" alt="Athletic Binblau Logo">
+            <span>| ABB</span>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="history.html">History</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+
+    <!-- Team Section -->
+    <main>
+        <p class="centered">Das Team</p>
+
+        <section class="team">
+            <!-- Player 1 -->
+            <div class="team-member">
+                <div class="player-media">
+                    <div class="player-name-box">
+                        <p>Elias</p>
+                        <p>9</p>
+                    </div>
+                    <video class="player-video" src="videos-for-playercards/elias.mp4" muted></video>
+                </div>
+            </div>
+            
+            <!-- Player 2 -->
+            <div class="team-member">
+                <div class="player-media">
+                    <div class="player-name-box">
+                        <p>Raphael</p>
+                        <p>11</p>
+                    </div>
+                    <video class="player-video" src="videos-for-playercards/raphael.mp4" muted></video>
+                </div>
+            </div>
+            
+            <!-- Player 3 -->
+            <div class="team-member">
+                <div class="player-media">
+                    <div class="player-name-box">
+                        <p>Paul</p>
+                        <p>6</p>
+                    </div>
+                    <video class="player-video" src="videos-for-playercards/paul.mp4" muted></video>
+                </div>
+            </div>
+    
+            <!-- Player 4 -->
+            <div class="team-member">
+                <div class="player-media">
+                    <div class="player-name-box">
+                        <p>Daniel</p>
+                        <p>16</p>
+                    </div>
+                    <video class="player-video" src="videos-for-playercards/daniel.mp4" muted></video>
+                </div>
+            </div>
+    
+            <!-- Player 5 -->
+            <div class="team-member">
+                <div class="player-media">
+                    <div class="player-name-box">
+                        <p>Luca</p>
+                        <p>19</p>
+                    </div>
+                    <video class="player-video" src="videos-for-playercards/luca.mp4" muted></video>
+                </div>
+            </div>
+    
+            <!-- Player 6 -->
+            <div class="team-member">
+                <div class="player-media">
+                    <div class="player-name-box">
+                        <p>Veit</p>
+                        <p>10</p>
+                    </div>
+                    <video class="player-video" src="videos-for-playercards/veit.mp4" muted></video>
+                </div>
+            </div>
+    
+            <!-- Player 7 -->
+            <div class="team-member">
+                <div class="player-media">
+                    <div class="player-name-box">
+                        <p>Matte</p>
+                        <p>4</p>
+                    </div>
+                    <video class="player-video" src="videos-for-playercards/matte.mp4" muted></video>
+                </div>
+            </div>
+    
+            <!-- Player 8 -->
+            <div class="team-member">
+                <div class="player-media">
+                    <div class="player-name-box">
+                        <p>Fabi</p>
+                        <p>1</p>
+                    </div>
+                    <video class="player-video" src="videos-for-playercards/fabi.mp4" muted></video>
+                </div>
+            </div>
+    
+            <!-- Player 9 -->
+            <div class="team-member">
+                <div class="player-media">
+                    <div class="player-name-box">
+                        <p>Junis</p>
+                        <p>5</p>
+                    </div>
+                    <video class="player-video" src="videos-for-playercards/junis.mp4" muted></video>
+                </div>
+            </div>
+    
+            <!-- Player 10 -->
+            <div class="team-member">
+                <div class="player-media">
+                    <div class="player-name-box">
+                        <p>Timo</p>
+                        <p>22</p>
+                    </div>
+                    <video class="player-video" src="videos-for-playercards/timo.mp4" muted></video>
+                </div>
+            </div>
+    
+            <!-- Player 11 -->
+            <div class="team-member">
+                <div class="player-media">
+                    <div class="player-name-box">
+                        <p>Rene</p>
+                        <p>3</p>
+                    </div>
+                    <video class="player-video" src="videos-for-playercards/rene.mp4" muted></video>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social"></div>
+            <a href="https://www.instagram.com/_athletic_binblau" target="_blank" rel="noopener noreferrer">
+                <img src="ig-icon.png" alt="Instagram" style="width: 24px; height: 24px; vertical-align: middle;">
+            </a>
+            <a href="https://open.spotify.com/intl-de/album/0u8Q4y87x43mS3QIi9T28B" target="_blank" rel="noopener noreferrer">
+                <img src="Spotify-icon.png" alt="Spotify" style="width: 20px; height: 20px; vertical-align: middle;">
+            </a>
+        </div>
+        <p>&copy; 2024 Athletic Binblau. All Rights Reserved.</p>
+    </footer>
+    
+    <script>
+        // Create an IntersectionObserver instance
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                const playerVideo = entry.target.querySelector('.player-video');
+                const playerNameBox = entry.target.querySelector('.player-name-box');
+    
+                if (entry.isIntersecting) {
+                    playerVideo.style.display = 'block';
+                    if (playerVideo.currentTime === 0) { // Start the video only if it hasn't started yet
+                        playerVideo.play();
+                    }
+    
+                    // Add event listener for when the video ends
+                    playerVideo.addEventListener('ended', () => {
+                        // Hold at the last frame by setting the currentTime to the duration (last frame)
+                        playerVideo.currentTime = playerVideo.duration;
+
+                        // Show the player's name and number at the top 1/4 of the box
+                        playerNameBox.style.display = 'block';
+                    });
+                } 
+            });
+        }, {
+            threshold: 1.0 // Ensures that the video starts only when the whole element is visible
+        });
+    
+        // Observe each team member
+        document.querySelectorAll('.team-member').forEach(teamMember => {
+            observer.observe(teamMember);
+        });
+    </script>
+</body>
+</html>
