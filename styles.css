@@ -306,9 +306,21 @@ footer {
 }
 
 footer .social a {
-    margin: 0 10px;
+    margin: 0 1px;
     color: #fff;
     text-decoration: none;
+}
+
+footer .social a:link,
+footer .social a:visited {
+    color: #fff;
+    text-decoration: none;
+}
+
+footer .social a:hover,
+footer .social a:active {
+    text-decoration: none;
+    opacity: 0.8; /* Optional: adds hover effect */
 }
 
 @media (max-width: 768px) {
