@@ -342,14 +342,15 @@ footer .social a:active {
     .team {
         grid-template-columns: repeat(2, 1fr); /* 2 videos per row */
         gap: 15px; /* Adjust gap between items */
-        margin-left: 20px; /* Reduce margin for smaller screens */
-        margin-right: 20px;
+        margin-left: 40px; /* Reduce margin for smaller screens */
+        margin-right: 40px;
     }
 
     /* Resize player media for smaller screens */
     .player-media {
         width: 225px; /* Adjust width for smaller screens */
         height: 298px; /* Maintain aspect ratio */
+        margin-bottom: 80px;
     }
 
     .player-name-box {
@@ -384,9 +385,9 @@ footer .social a:active {
     }
 
     .player-media {
-        width: 100px;
-        height: 125px;
-        margin-bottom: 80px;
+        width: 125px;
+        height: 150px;
+        margin-bottom: 50px;
     }
 
     .player-name-box {
