@@ -131,7 +131,7 @@ footer .social a {
 /* Player Media Styling */
 .player-media {
     width: 300px;
-    height: 400px;
+    height: 398px;
     margin: 0 auto;
     position: relative;
     background-color: #4f89c8;
@@ -306,9 +306,21 @@ footer {
 }
 
 footer .social a {
-    margin: 0 10px;
+    margin: 0 1px;
     color: #fff;
     text-decoration: none;
+}
+
+footer .social a:link,
+footer .social a:visited {
+    color: #fff;
+    text-decoration: none;
+}
+
+footer .social a:hover,
+footer .social a:active {
+    text-decoration: none;
+    opacity: 0.8; /* Optional: adds hover effect */
 }
 
 @media (max-width: 768px) {
@@ -326,7 +338,29 @@ footer .social a {
         margin-left: 50px; /* Original left margin */
         margin-right: 50px; /* Original right margin */
     }
+    
+    .team {
+        grid-template-columns: repeat(2, 1fr); /* 2 videos per row */
+        gap: 15px; /* Adjust gap between items */
+        margin-left: 20px; /* Reduce margin for smaller screens */
+        margin-right: 20px;
+    }
 
+    /* Resize player media for smaller screens */
+    .player-media {
+        width: 225px; /* Adjust width for smaller screens */
+        height: 298px; /* Maintain aspect ratio */
+    }
+
+    .player-name-box {
+        font-size: 14px; /* Reduce font size for names */
+        padding: 8px; /* Adjust padding */
+    }
+
+    .player-video {
+        width: 100%; /* Ensure the video fits the container */
+        height: 100%;
+    }
 
     nav ul {
         display: flex;
@@ -340,6 +374,26 @@ footer .social a {
 
 /* Further adjustments for very small screens */
 @media (max-width: 480px) {
+    
+    .team {
+        grid-template-columns: repeat(2, 1fr); /* 2 videos per row */
+        gap: 15px; /* Adjust gap between items */
+        margin-left: 20px; /* Reduce margin for smaller screens */
+        margin-right: 20px;
+        margin-bottom: 80px;
+    }
+
+    .player-media {
+        width: 100px;
+        height: 125px;
+        margin-bottom: 80px;
+    }
+
+    .player-name-box {
+        font-size: 12px; /* Smaller text */
+        padding: 6px;
+    }
+    
     nav ul {
         gap: 10px; /* Even smaller gap for tiny screens */
     }
