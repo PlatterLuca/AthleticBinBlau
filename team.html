@@ -135,8 +135,15 @@
                 } 
             });
         }, {
-            threshold: 0.52 // Ensures that the video starts only when the whole element is visible
+            threshold: 0.51 // Ensures that the video starts only when the whole element is visible
         });
+        
+        if (window.innerWidth <= 480) {
+            document.querySelectorAll('.player-video').forEach(video => {
+            video.style.display = 'block';
+            video.play();
+            });
+}
     
         // Observe each team member
         document.querySelectorAll('.team-member').forEach(teamMember => {
