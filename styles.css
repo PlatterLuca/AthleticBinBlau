@@ -381,13 +381,13 @@ footer .social a:active {
         gap: 15px; /* Adjust gap between items */
         margin-left: 20px; /* Reduce margin for smaller screens */
         margin-right: 20px;
-        margin-bottom: 80px;
+        margin-bottom: 40px;
     }
 
     .player-media {
-        width: 125px;
-        height: 150px;
-        margin-bottom: 50px;
+        width: 150px;
+        height: 186px;
+        margin-bottom: 40px;
     }
 
     .player-name-box {
