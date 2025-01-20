@@ -113,37 +113,44 @@
     
     <script>
         // Create an IntersectionObserver instance
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                const playerVideo = entry.target.querySelector('.player-video');
-                const playerNameBox = entry.target.querySelector('.player-name-box');
+        const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            const playerVideo = entry.target.querySelector('.player-video');
+            const playerNameBox = entry.target.querySelector('.player-name-box');
     
-                if (entry.isIntersecting) {
-                    playerVideo.style.display = 'block';
-                    if (playerVideo.currentTime === 0) { // Start the video only if it hasn't started yet
-                        playerVideo.play();
-                    }
+            if (entry.isIntersecting) {
+                playerVideo.style.display = 'block';
+                if (playerVideo.currentTime === 0) {
+                    playerVideo.play();
+                }
     
-                    // Add event listener for when the video ends
-                    playerVideo.addEventListener('ended', () => {
-                        // Hold at the last frame by setting the currentTime to the duration (last frame)
-                        playerVideo.currentTime = playerVideo.duration;
-
-                        // Show the player's name and number at the top 1/4 of the box
-                        playerNameBox.style.display = 'block';
-                    });
-                } 
-            });
-        }, {
-            threshold: 0.51 // Ensures that the video starts only when the whole element is visible
+                playerVideo.addEventListener('ended', () => {
+                    playerVideo.currentTime = playerVideo.duration; // Hold at last frame
+                    playerNameBox.style.display = 'block'; // Show name box
+                });
+            }
         });
-        
-}
+    }, { threshold: 0.5 }); // Adjusted threshold for partial visibility
     
-        // Observe each team member
-        document.querySelectorAll('.team-member').forEach(teamMember => {
+    // Determine screen size
+    if (window.innerWidth > 768) {
+        // For bigger screens, use IntersectionObserver
+        document.querySelectorAll('.team-member').forEach((teamMember) => {
             observer.observe(teamMember);
         });
+    } else {
+        // For smaller screens, automatically play videos
+        document.querySelectorAll('.player-video').forEach((video) => {
+            video.style.display = 'block';
+            video.play();
+    
+            video.addEventListener('ended', () => {
+                video.currentTime = video.duration; // Hold at last frame
+                const playerNameBox = video.closest('.player-media').querySelector('.player-name-box');
+                playerNameBox.style.display = 'block'; // Show name box
+            });
+        });
+    }
     </script>
 </body>
 </html>
