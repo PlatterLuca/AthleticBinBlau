@@ -2,6 +2,11 @@ import { useEffect, useState } from 'react';
 
 export default function Hero() {
   const [bgImage, setBgImage] = useState('/stock-1.jpg');
+  const phrases = ['nur Athletic', 'alles Gold'];
+  const [currentPhrase, setCurrentPhrase] = useState('');
+  const [phraseIndex, setPhraseIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
     const updateBackground = () => {
@@ -12,13 +17,34 @@ export default function Hero() {
       }
     };
 
-    // Initial check
     updateBackground();
-
-    // Optional: update on resize
     window.addEventListener('resize', updateBackground);
     return () => window.removeEventListener('resize', updateBackground);
   }, []);
+
+  useEffect(() => {
+    const currentText = phrases[phraseIndex];
+    let typingSpeed = isDeleting ? 80 : 100;
+
+    const timeout = setTimeout(() => {
+      if (!isDeleting) {
+        setCharIndex(charIndex + 1);
+        setCurrentPhrase(currentText.substring(0, charIndex + 1));
+        if (charIndex + 1 === currentText.length) {
+          setTimeout(() => setIsDeleting(true), 5000); // pause before deleting
+        }
+      } else {
+        setCharIndex(charIndex - 1);
+        setCurrentPhrase(currentText.substring(0, charIndex - 1));
+        if (charIndex === 0) {
+          setIsDeleting(false);
+          setPhraseIndex((phraseIndex + 1) % phrases.length);
+        }
+      }
+    }, typingSpeed);
+
+    return () => clearTimeout(timeout);
+  }, [charIndex, isDeleting, phraseIndex]);
 
   return (
     <section
@@ -27,7 +53,9 @@ export default function Hero() {
     >
       <div className="text-center mb-[400px]">
         <h1 className="text-5xl font-bold">Athletic Binblau</h1>
-        <p className="text-2xl">Im Talboden nur Athletic!</p>
+        <p className="text-2xl">
+          Im Talboden <span className="border-r-2 border-white animate-pulse">{currentPhrase}</span>
+        </p>
       </div>
     </section>
   );

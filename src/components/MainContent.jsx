@@ -3,7 +3,7 @@ export default function MainContent() {
     <main className="mt-24 px-4">
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="text-3xl text-blue-800 mb-6 font-bold">
-          Die größte Kleinfeldturnier-Mannschaft aller Zeiten
+          Die größte Kleinfeld-Mannschaft aller Zeiten
         </h2>
         <p className="mb-4">
           Im Herzen des Fußballs gibt es eine Kategorie von Teams, die durch ihre außergewöhnliche Leistung im Kleinfeldturnier-Format hervorsticht.
