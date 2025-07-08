@@ -9,7 +9,7 @@ export default function Footer() {
             <img src="/Spotify-icon.png" alt="Spotify" className="w-5 h-5 inline" />
           </a>
         </div>
-        <p>&copy; 2024 Athletic Binblau. All Rights Reserved.</p>
+        <p>&copy; 2025 Athletic Binblau. All Rights Reserved.</p>
       </footer>
     )
   }
