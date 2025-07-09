@@ -10,8 +10,8 @@ export default function Header() {
       <nav>
         <ul className="flex gap-3 sm:gap-6">
           <li><Link to="/Team" className="text-white font-medium text-sm sm:text-base hover:underline">Team</Link></li>
-          <li><a href="/" className="text-white font-medium text-sm sm:text-base hover:underline">About</a></li>
-          <li><a href="/" className="text-white font-medium text-sm sm:text-base hover:underline">Contact</a></li>
+          <li><Link to="/About" className="text-white font-medium text-sm sm:text-base hover:underline">About</Link></li>
+          <li><Link to="/Contact" className="text-white font-medium text-sm sm:text-base hover:underline">Contact</Link></li>
         </ul>
       </nav>
     </header>

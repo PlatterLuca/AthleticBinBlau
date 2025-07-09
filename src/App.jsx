@@ -4,6 +4,8 @@ import { useEffect } from 'react';
 import Header from './components/Header';
 import Team from './pages/Team';
 import Home from './pages/Home';
+import About from './pages/About';
+import Contact from './pages/Contact';
 import Footer from './components/Footer';
 
 // Wrapper to handle redirect after 404 fallback
@@ -29,7 +31,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/team" element={<Team />} />
-        {/* Add other routes as needed */}
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
       <Footer />
     </Router>
