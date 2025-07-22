@@ -20,6 +20,7 @@ const players = [
 export default function Team() {
   const [showNames, setShowNames] = useState(false);
   const [hasAnimated, setHasAnimated] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   const handleFirstVideoEnd = () => setShowNames(true);
 
@@ -45,8 +46,25 @@ export default function Team() {
         />
       </div>
 
+      {!isMobile && (
+        <div className="w-full px-12 py-6 flex justify-between items-center">
+          <a href="/" className="flex items-center no-underline text-white drop-shadow-sm">
+            <img src="/logo.png" alt="Athletic Binblau Logo" className="w-10 mr-3" />
+            <span className="font-bold text-lg">| ABB</span>
+          </a>
+          <nav>
+            <ul className="flex gap-8 text-white font-medium text-base">
+              <li><a href="/team" className="hover:underline">Team</a></li>
+              <li><a href="/about" className="hover:underline">About</a></li>
+              <li><a href="/contact" className="hover:underline">Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+      )}
+
+
       {/* ─────────────────────  Foreground content  ───────────────────── */}
-      <main className="relative z-10 py-24 px-6 md:px-20">
+      <main className="relative z-10 py-24 sm:py-5 px-6 md:px-20">
         <div className="flex justify-center mb-12">
         <BlurText
             text="Das Team"

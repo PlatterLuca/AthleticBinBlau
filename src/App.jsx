@@ -27,14 +27,18 @@ function App() {
   return (
     <Router>
       <RedirectHandler />
+      <div className="min-h-screen flex flex-col">
       <Header />
+      <main className="flex-grow">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/team" element={<Team />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
+      </main>
       <Footer />
+      </div>
     </Router>
   );
 }
