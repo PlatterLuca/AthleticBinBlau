@@ -13,7 +13,7 @@ export default function Header() {
   if (!isMobile) return null;
 
   return (
-    <header className="fixed w-full backdrop-blur bg-blue-800/30 px-4 py-3 flex justify-between items-center z-50 sm:hidden">
+    <header className="fixed w-full backdrop-blur bg-blue-800/30 px-4 py-3 flex justify-between items-center z-50">
       <a href="/" className="flex items-center no-underline text-white drop-shadow-sm">
         <img src="/logo.png" alt="Athletic Binblau Logo" className="w-8 mr-2" />
         <span className="font-bold text-base">| ABB</span>

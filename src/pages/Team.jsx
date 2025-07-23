@@ -5,6 +5,7 @@ import Silk from "../components/Silk";
 import Beams from "../components/Beams";
 import SplitText from "../components/SplitText";
 import BlurText from "../components/BlurText";
+import LightRays from "../components/LightRays";
 
 const players = [
   { name: "Elias",  number: "9",  video: "videos-for-playercards/elias.mp4"   },
@@ -37,7 +38,7 @@ export default function Team() {
         <Beams
           beamWidth={2}
           beamHeight={25}
-          beamNumber={18}
+          beamNumber={0}
           lightColor="#ffffff"
           speed={2}
           noiseIntensity={1.75}
@@ -45,6 +46,21 @@ export default function Team() {
           rotation={45}
         />
       </div>
+
+      <div className="fixed inset-0 -z-50">
+      <LightRays
+        raysOrigin="top-center"
+        raysColor="#ffffff"
+        raysSpeed={1.5}
+        lightSpread={0.8}
+        rayLength={1.2}
+        followMouse={true}
+        mouseInfluence={0.1}
+        noiseAmount={0.1}
+        distortion={0.05}
+        className="custom-rays"
+      />
+    </div>
 
       {!isMobile && (
         <div className="w-full px-12 py-6 flex justify-between items-center">

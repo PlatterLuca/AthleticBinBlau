@@ -6,6 +6,7 @@ export default function MainContent() {
   return (
     <main className="mt-24 px-4">
       {/* background */}
+      {/** 
       <div className="fixed inset-0 -z-50">
         <Beams
           beamWidth={2}
@@ -18,6 +19,10 @@ export default function MainContent() {
           rotation={45}
         />
       </div>
+      <div className="fixed inset-0 -z-50" style={{ backgroundColor: '#4A90E2' }}></div>
+      */}
+      
+      <div className="fixed inset-0 -z-50 bg-[#FDF6F2]"></div>
 
       {/* headline */}
       <ScrollReveal
@@ -26,7 +31,7 @@ export default function MainContent() {
         baseRotation={5}
         blurStrength={15}
         containerClassName="max-w-4xl mx-auto text-center mb-6"
-        textClassName="text-2xl sm:text-3xl lg:text-4xl font-bold text-white"
+        textClassName="text-2xl sm:text-3xl lg:text-4xl font-bold text-black"
       >
         Die größte Kleinfeld-Mannschaft aller Zeiten
       </ScrollReveal>
@@ -38,7 +43,7 @@ export default function MainContent() {
         baseRotation={5}
         blurStrength={15}
         containerClassName="max-w-4xl mx-auto text-center mb-4"
-        textClassName="text-md sm:text-sm md:text-lg leading-relaxed text-white"
+        textClassName="text-md sm:text-sm md:text-lg leading-relaxed text-black"
       >
         Im Herzen des Fußballs gibt es eine Kategorie von Teams, die durch ihre
         außergewöhnliche Leistung im Kleinfeldturnier-Format hervorsticht. Die
@@ -54,7 +59,7 @@ export default function MainContent() {
         baseRotation={5}
         blurStrength={15}
         containerClassName="max-w-4xl mx-auto text-center mb-4"
-        textClassName="text-md sm:text-sm md:text-lg leading-relaxed text-white"
+        textClassName="text-md sm:text-sm md:text-lg leading-relaxed text-black"
       >
         Mit einer Mischung aus technischem Können, unermüdlichem Einsatz und
         einem einzigartigen Teamgeist eroberte ABB die Kleinfeldturnierszene im
@@ -71,7 +76,7 @@ export default function MainContent() {
         baseRotation={5}
         blurStrength={15}
         containerClassName="max-w-4xl mx-auto text-center mb-4"
-        textClassName="text-md sm:text-sm md:text-lg leading-relaxed text-white"
+        textClassName="text-md sm:text-sm md:text-lg leading-relaxed text-black"
       >
         Besonders bemerkenswert ist, wie die Spieler von ABB ihren Siegeswillen
         stets mit Fair Play und Sportsgeist verbinden. Sie begeistern Fans durch
@@ -88,7 +93,7 @@ export default function MainContent() {
         baseRotation={5}
         blurStrength={15}
         containerClassName="max-w-4xl mx-auto text-center"
-        textClassName="text-md sm:text-sm md:text-lg leading-relaxed text-white"
+        textClassName="text-md sm:text-sm md:text-lg leading-relaxed text-black"
       >
         In der Geschichte dieses Sports wird der Name Athletic BinBlau für immer
         leuchten – nicht nur als Synonym für Erfolg, sondern als Inbegriff einer
