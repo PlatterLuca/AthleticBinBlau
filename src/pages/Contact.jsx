@@ -51,7 +51,8 @@ export default function Contact() {
 
 
       {/* ──────────── Foreground Content ──────────── */}
-      <main className="relative z-10 min-h-screen flex items-center justify-center px-6 text-center">
+      <main className="relative z-10 min-h-screen flex items-start justify-center pt-80 px-6 text-center">
+
         <div className="text-center">
           <BlurText
             text="Contact - Coming Soon!"

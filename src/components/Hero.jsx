@@ -3,7 +3,7 @@ import Header from './Header';
 import AnimatedContent from "../components/AnimatedContent"
 
 export default function Hero() {
-  const [bgImage, setBgImage] = useState('/stock-1.jpg');
+  const [bgImage, setBgImage] = useState('/abb_start.png');
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   const phrases = ['nur Athletic', 'alles Gold'];
@@ -15,7 +15,7 @@ export default function Hero() {
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
-      setBgImage(window.innerWidth < 768 ? '/abb_mobile_licht_hell.png' : '/stock-1.jpg');
+      setBgImage(window.innerWidth < 768 ? '/abb_mobile_licht_hell.png' : '/abb_start.png');
     };
 
     handleResize();

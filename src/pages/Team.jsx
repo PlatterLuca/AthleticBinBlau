@@ -83,7 +83,7 @@ export default function Team() {
 
 
       {/* ─────────────────────  Foreground content  ───────────────────── */}
-      <main className="relative z-10 py-24 sm:py-5 px-6 md:px-20">
+      <main className="relative z-10 py-24 md:py-5 px-6 md:px-20">
         {/** 
         <div className="flex justify-center mb-12">
         <BlurText

@@ -31,7 +31,18 @@ export default function Contact() {
 
   return (
     <>
-      <div className="fixed inset-0 -z-50"></div>
+      {!isMobile && (<div className="fixed inset-0 -z-50" style={{ backgroundColor: '#4A90E2' }}></div>)}
+      {isMobile && (
+      <div className="fixed inset-0 -z-50">
+      <Silk
+        speed={5}
+        scale={1}
+        color="#7B7481"
+        noiseIntensity={1.5}
+        rotation={0}
+      />
+      </div>
+      )}
       {/* ──────────── Conditional Header ──────────── */}
       {!isMobile && (
         <div className="w-full px-12 py-6 flex justify-between items-center" style={{ backgroundColor: '#4A90E2' }}>
@@ -50,11 +61,13 @@ export default function Contact() {
       )}
 
       {/* ──────────── Foreground Content ──────────── */}
+      {!isMobile && (
       <main className="relative z-10 min-h-screen px-6 py-20 flex items-start justify-center text-white" style={{ backgroundColor: '#4A90E2' }}>
         <div className="w-full max-w-7xl flex flex-col lg:flex-row items-center justify-center gap-0 relative">
 
           {/* ──────────── Text Content ──────────── */}
           <div className="flex-1 space-y-8 text-center lg:text-left relative">
+          <div className="relative inline-block">
             <AnimatedContent
                   distance={100}
                   direction="horizontal"
@@ -85,7 +98,7 @@ export default function Contact() {
                   scale={1.1}
                   threshold={0.2}
                   delay={0.7}
-                  ><div className="absolute -top-14 right-0 flex gap-2 text-2xl">
+                  ><div className="absolute -top-10 right-0 flex gap-2 text-2xl">
                   {/* blue hollow heart */}
                   <span className="text-transparent [-webkit-text-stroke:1px_black] [text-stroke:1px_black]">
                     ♥
@@ -102,7 +115,7 @@ export default function Contact() {
                   </span>
                 </div>
             </AnimatedContent>
-            <div className="relative inline-block">
+            
               <div className="text-center">
               
                 <AnimatedContent
@@ -235,59 +248,24 @@ export default function Contact() {
         </div>
       </main>
 
-      <section className="bg-[#FDF6F2] py-32 px-6 text-neutral-800">
-        {/* ───── Horizontal Line (like main) ───── */}
-        <div className="flex justify-center mb-16">
-          <div
-            className="h-[4px] bg-neutral-800 transition-all duration-1000 ease-out origin-left"
-            style={{
-              width: lineVisible ? '180px' : '0px',
-            }}
-          ></div>
+      )}
+      {isMobile && (
+
+      
+      <main className="relative z-10 min-h-screen flex items-center justify-center px-6 text-center">
+        
+        <div className="text-center">
+          <BlurText
+            text="About Mobile - Coming Soon!"
+            delay={150}
+            animateBy="words"
+            direction="top"
+            onAnimationComplete={handleAnimationComplete}
+            className="text-4xl sm:text-5xl font-bold text-white drop-shadow-lg"
+          />
         </div>
-
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 relative">
-
-          {/* ───── LEFT COLUMN ───── */}
-          <div className="flex flex-col gap-4 items-start">
-            <img
-              src="/abb1.jpeg"
-              alt="Lip close-up"
-              className="rounded-lg shadow-md w-full max-w-[480px] object-cover"
-            />
-            <p className="text-sm text-neutral-600 max-w-sm pl-1">
-              ABB ist kein Look. ABB ist eine Haltung.
-            </p>
-          </div>
-
-          {/* ───── RIGHT COLUMN ───── */}
-          <div className="relative flex flex-col gap-10 pt-20">
-
-            {/* Paragraph */}
-            <div className="relative max-w-xl z-10">
-              <p className="text-base leading-relaxed border-l-2 border-neutral-400 pl-4">
-              Athletic Binblau ist mehr als ein Team – es ist ein Lebensgefühl. Was als lockeres Hobby begann,
-              hat sich zu einer Marke entwickelt, die Stil, Teamgeist und Unabhängigkeit vereint. ABB steht
-              für Fußballkultur, Gemeinschaft und Identität.
-             </p>
-
-              {/* Floating Small Image */}
-              <img
-                src="/abb4.jpeg"
-                alt="Small"
-                className="absolute top-0 -right-40 w-32 h-32 rounded-md object-cover shadow-md"
-              />
-            </div>
-
-            {/* Medium Image */}
-            <img
-              src="/Teamfoto.jpeg"
-              alt="Medium"
-              className="w-[400px] rounded-md object-cover shadow-md"
-            />
-          </div>
-        </div>
-      </section>
+      </main>
+      )}
     </>
   );
 }
