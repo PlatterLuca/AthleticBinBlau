@@ -6,6 +6,7 @@ import Beams from "../components/Beams";
 import SplitText from "../components/SplitText";
 import BlurText from "../components/BlurText";
 import LightRays from "../components/LightRays";
+import AnimatedContent from "../components/AnimatedContent"
 
 const players = [
   { name: "Elias",  number: "9",  video: "videos-for-playercards/elias.mp4"   },
@@ -33,8 +34,10 @@ export default function Team() {
   return (
     <>
       {/* ─────────────────────  Animated background  ───────────────────── */}
+      
+      <div className="fixed inset-0 -z-50 bg-[#FDF6F2]"></div>
+      {/**
       <div className="fixed inset-0 -z-50">
-        {/* Optionally enable Silk or Dither here */}
         <Beams
           beamWidth={2}
           beamHeight={25}
@@ -61,15 +64,15 @@ export default function Team() {
         className="custom-rays"
       />
     </div>
-
+      */}
       {!isMobile && (
         <div className="w-full px-12 py-6 flex justify-between items-center">
-          <a href="/" className="flex items-center no-underline text-white drop-shadow-sm">
+          <a href="/" className="flex items-center no-underline text-balck drop-shadow-sm">
             <img src="/logo.png" alt="Athletic Binblau Logo" className="w-10 mr-3" />
             <span className="font-bold text-lg">| ABB</span>
           </a>
           <nav>
-            <ul className="flex gap-8 text-white font-medium text-base">
+            <ul className="flex gap-8 text-black font-medium text-base">
               <li><a href="/team" className="hover:underline">Team</a></li>
               <li><a href="/about" className="hover:underline">About</a></li>
               <li><a href="/contact" className="hover:underline">Contact</a></li>
@@ -81,6 +84,7 @@ export default function Team() {
 
       {/* ─────────────────────  Foreground content  ───────────────────── */}
       <main className="relative z-10 py-24 sm:py-5 px-6 md:px-20">
+        {/** 
         <div className="flex justify-center mb-12">
         <BlurText
             text="Das Team"
@@ -91,7 +95,46 @@ export default function Team() {
             className="text-4xl sm:text-5xl font-bold text-white drop-shadow-lg"
             />
         </div>
-
+          */}
+          
+        <div className="flex flex-col items-center mb-12">
+        <AnimatedContent
+                  distance={100}
+                  direction="horizontal"
+                  reverse={true}
+                  duration={1.2}
+                  ease="power3.out"
+                  initialOpacity={0.0}
+                  animateOpacity
+                  scale={1.1}
+                  threshold={0.2}
+                  delay={0.7}
+                  >
+                    <h1 className="text-4xl sm:text-5xl font-bold text-black drop-shadow-lg">Das Team</h1>       
+                  </AnimatedContent>
+          <div
+            className="h-[3px] bg-black mt-2 origin-right"
+            style={{
+              width: '180px',
+              transform: 'scaleX(0)',
+              animation: 'draw-underline 1s ease-out forwards',
+              animationDelay: '1s',
+            }}
+          ></div>
+        </div>
+        <AnimatedContent
+                  distance={100}
+                  direction="vertical"
+                  reverse={true}
+                  duration={1.2}
+                  ease="power3.out"
+                  initialOpacity={0.0}
+                  animateOpacity
+                  scale={1.1}
+                  threshold={0.2}
+                  delay={0.3}
+                  >
+        
         <section className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-4 place-items-center">
           {players.map((player, index) => (
             <div key={index} className="team-member text-center">
@@ -127,6 +170,7 @@ export default function Team() {
             </div>
           ))}
         </section>
+        </AnimatedContent>
       </main>
     </>
   );

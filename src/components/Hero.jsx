@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import Header from './Header';
+import AnimatedContent from "../components/AnimatedContent"
 
 export default function Hero() {
   const [bgImage, setBgImage] = useState('/stock-1.jpg');
@@ -69,10 +70,39 @@ export default function Hero() {
 
 
       <div className="flex-grow flex flex-col items-center justify-center text-center mb-[400px] sm:mb-[525px] pt-16 sm:pt-0">
-        <h1 className="text-5xl font-bold">Athletic Binblau</h1>
-        <p className="text-2xl">
-          Im Talboden <span className="border-r-2 border-white animate-pulse">{currentPhrase}</span>
-        </p>
+        
+                  <AnimatedContent
+                  distance={100}
+                  direction="vertical"
+                  reverse={true}
+                  duration={1.2}
+                  ease="power3.out"
+                  initialOpacity={0.0}
+                  animateOpacity
+                  scale={1.1}
+                  threshold={0.2}
+                  delay={0.3}
+                  >
+                    <h1 className="text-5xl font-bold">Athletic Binblau</h1>       
+                  </AnimatedContent>
+
+                  
+                  <AnimatedContent
+                  distance={100}
+                  direction="vertical"
+                  reverse={false}
+                  duration={1.2}
+                  ease="power3.out"
+                  initialOpacity={0.0}
+                  animateOpacity
+                  scale={1.1}
+                  threshold={0.2}
+                  delay={0.3}
+                  >
+                   <p className="text-2xl">
+                    Im Talboden <span className="border-r-2 border-white animate-pulse">{currentPhrase}</span>
+                  </p>
+                  </AnimatedContent>
       </div>
     </section>
   );

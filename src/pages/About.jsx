@@ -5,6 +5,7 @@ import BlurText from "../components/BlurText";
 import Silk from "../components/Silk";
 import AnimatedContent from "../components/AnimatedContent"
 import CircularText from '../components/CircularText';
+import TextPressure from "../components/TextPressure"
 
 export default function Contact() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -49,7 +50,7 @@ export default function Contact() {
       )}
 
       {/* ──────────── Foreground Content ──────────── */}
-      <main className="relative z-10 min-h-screen px-6 py-40 flex items-start justify-center text-white" style={{ backgroundColor: '#4A90E2' }}>
+      <main className="relative z-10 min-h-screen px-6 py-20 flex items-start justify-center text-white" style={{ backgroundColor: '#4A90E2' }}>
         <div className="w-full max-w-7xl flex flex-col lg:flex-row items-center justify-center gap-0 relative">
 
           {/* ──────────── Text Content ──────────── */}
@@ -71,6 +72,36 @@ export default function Contact() {
             </AnimatedContent>
             
 
+            
+
+            <AnimatedContent
+                  distance={100}
+                  direction="horizontal"
+                  reverse={false}
+                  duration={1.2}
+                  ease="power3.out"
+                  initialOpacity={0.0}
+                  animateOpacity
+                  scale={1.1}
+                  threshold={0.2}
+                  delay={0.7}
+                  ><div className="absolute -top-14 right-0 flex gap-2 text-2xl">
+                  {/* blue hollow heart */}
+                  <span className="text-transparent [-webkit-text-stroke:1px_black] [text-stroke:1px_black]">
+                    ♥
+                  </span>
+                
+                  {/* white filled + outline */}
+                  <span className="text-white drop-shadow-sm [-webkit-text-stroke:1px_black] [text-stroke:1px_black]">
+                    ♥
+                  </span>
+                
+                  {/* yellow filled + outline */}
+                  <span className="text-yellow-400 [-webkit-text-stroke:1px_black] [text-stroke:1px_black]">
+                    ♥
+                  </span>
+                </div>
+            </AnimatedContent>
             <div className="relative inline-block">
               <div className="text-center">
               
@@ -101,17 +132,28 @@ export default function Contact() {
                   scale={1.1}
                   threshold={0.2}
                   delay={0.3}
-                  ><h1 className="text-[6rem] leading-none font-light tracking-tight  pl-4">GOLD</h1>
+                  >
+                    <div style={{position: 'relative', height: '300px'}}>
+
+              <TextPressure //customized function, no animation after 100 ms for strecheffect. Probably inefficient as fuck
+                text="GOLD"
+                flex={true}
+                alpha={false}
+                stroke={false}
+                width={true}
+                weight={true}
+                italic={true}
+                textColor="#ffffff"
+                strokeColor="#ff0000"
+                className="text-[6rem] leading-none font-light tracking-tight  pl-4"
+                minFontSize={36}
+              />
+              </div>
                 </AnimatedContent>
               </div>
-
-              {/* Hearts */}
-              <div className="absolute -top-8 right-0 flex gap-2 text-2xl">
-                <span className="text-blue-600">♥</span>
-                <span className="text-white drop-shadow-sm">♥</span>
-                <span className="text-yellow-400">♥</span>
-              </div>
-            </div>
+              
+              
+            
 
             <AnimatedContent
                   distance={100}
@@ -124,17 +166,20 @@ export default function Contact() {
                   scale={1.1}
                   threshold={0.2}
                   delay={0.3}
-                  ><p className="text-base text-white text-neutral-800 max-w-md mx-auto lg:mx-0">
-                    Von vertrauten Hobby-Treffen bis zu ikonischen Spielmomenten
+                  ><p className="text-xl max-w-md mx-auto lg:mx-0">
+                  Von vertrauten Hobby-Treffen bis zu ikonischen Spielmomenten
                   </p>
             </AnimatedContent>
-            
+            </div>
 
             {/* Horizontal Line */}
             <div
               className={`hidden lg:block absolute top-[50%] right-[-0.5rem] h-[4px] bg-white z-20 transition-all duration-1000 ease-out origin-left transform`}
               style={{
                 width: lineVisible ? '180px' : '0px',
+                transform: 'scaleX(0)',
+                animation: 'draw-underline 1s ease-out forwards',
+                animationDelay: '0.5s',
               }}
             ></div>
 
@@ -157,7 +202,24 @@ export default function Contact() {
           <div><img
               src="Teamfoto.jpeg"
               alt="ABB"
-              className="rounded-lg w-[400px] sm:w-[1000px] object-cover shadow-2xl"
+              className="
+                rounded-lg object-cover shadow-2xl
+
+                /* Base/mobile: full width of its container */
+                w-full  
+
+                /* sm: up to 600px */
+                sm:max-w-[600px]
+
+                /* md: up to 800px */
+                md:max-w-[800px]
+
+                /* lg: up to 1200px */
+                lg:max-w-[1200px]
+
+                /* xl and above: up to 1600px */
+                xl:max-w-[3000px]
+              "
             /></div>
 
           </AnimatedContent>
