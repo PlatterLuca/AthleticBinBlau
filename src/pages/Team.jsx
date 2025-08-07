@@ -5,8 +5,8 @@ import Silk from "../components/Silk";
 import Beams from "../components/Beams";
 import SplitText from "../components/SplitText";
 import BlurText from "../components/BlurText";
-import LightRays from "../components/LightRays";
 import AnimatedContent from "../components/AnimatedContent"
+import ScrollVelocity from '../components/ScrollVelocity';
 
 const players = [
   { name: "Elias",  number: "9",  video: "videos-for-playercards/elias.mp4"   },
@@ -36,6 +36,7 @@ export default function Team() {
       {/* ─────────────────────  Animated background  ───────────────────── */}
       
       <div className="fixed inset-0 -z-50 bg-[#FDF6F2]"></div>
+      
       {/**
       <div className="fixed inset-0 -z-50">
         <Beams

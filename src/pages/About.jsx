@@ -3,26 +3,37 @@ import Header from "../components/Header";
 import Beams from "../components/Beams";
 import BlurText from "../components/BlurText";
 import Silk from "../components/Silk";
-import AnimatedContent from "../components/AnimatedContent"
+import AnimatedContent from "../components/AnimatedContent";
 import CircularText from '../components/CircularText';
-import TextPressure from "../components/TextPressure"
+import TextPressure from "../components/TextPressure";
+import ScrollVelocity from '../components/ScrollVelocity';
+import FuzzyText from '../components/FuzzyText';
+import BlueCheck from "../components/BlueCheck";
+
 
 export default function Contact() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [isSmartphone, setIsSmartphone] = useState(window.innerWidth < 640);
   const [lineVisible, setLineVisible] = useState(false);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
       setLineVisible(true);
-    }, 200); // slight delay so it animates after load
-
+    }, 200);
     return () => clearTimeout(timeout);
   }, []);
 
+  
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    const handleResizeForSmartphones = () => setIsSmartphone(window.innerWidth < 640);
+    window.addEventListener('resize', handleResizeForSmartphones);
+    return () => window.removeEventListener('resize', handleResizeForSmartphones);
   }, []);
 
   const handleAnimationComplete = () => {
@@ -31,19 +42,11 @@ export default function Contact() {
 
   return (
     <>
-      {!isMobile && (<div className="fixed inset-0 -z-50" style={{ backgroundColor: '#4A90E2' }}></div>)}
-      {isMobile && (
-      <div className="fixed inset-0 -z-50">
-      <Silk
-        speed={5}
-        scale={1}
-        color="#7B7481"
-        noiseIntensity={1.5}
-        rotation={0}
-      />
-      </div>
-      )}
-      {/* ──────────── Conditional Header ──────────── */}
+      {/* Background layers */}
+      <div className="fixed bg-[#FDF6F2] inset-0 -z-50"></div>
+ 
+
+      {/* Desktop Header */}
       {!isMobile && (
         <div className="w-full px-12 py-6 flex justify-between items-center" style={{ backgroundColor: '#4A90E2' }}>
           <a href="/" className="flex items-center no-underline text-white drop-shadow-sm">
@@ -60,7 +63,7 @@ export default function Contact() {
         </div>
       )}
 
-      {/* ──────────── Foreground Content ──────────── */}
+      {/* Desktop Content */}
       {!isMobile && (
       <main className="relative z-10 min-h-screen px-6 py-20 flex items-start justify-center text-white" style={{ backgroundColor: '#4A90E2' }}>
         <div className="w-full max-w-7xl flex flex-col lg:flex-row items-center justify-center gap-0 relative">
@@ -249,22 +252,192 @@ export default function Contact() {
       </main>
 
       )}
-      {isMobile && (
 
-      
-      <main className="relative z-10 min-h-screen flex items-center justify-center px-6 text-center">
+      {/* Mobile Content ------------------------------------------------------------------------------------------------------- */}
+      {/* Mobile Content ------------------------------------------------------------------------------------------------------- */}
+      {/* Mobile Content ------------------------------------------------------------------------------------------------------- */}
+      {isMobile && (
+        <main className="relative z-10">
+          <section className="w-full text-white min-h-screen flex flex-col items-center justify-start px-6 pt-20 pb-12" style={{ backgroundColor: '#4A90E2' }}>
+          {/* Text Block */}
+          <div className="relative w-full max-w-md text-center">
+            {/* Animate Hearts */}
+            <AnimatedContent
+              distance={100}
+              direction="horizontal"
+              reverse={false}
+              duration={1.2}
+              ease="power3.out"
+              initialOpacity={0.0}
+              animateOpacity
+              scale={1.1}
+              threshold={0.2}
+              delay={0.7}
+            >
+              <div className="absolute top-0 right-0 flex gap-2 text-2xl">
+                <span className="text-transparent [-webkit-text-stroke:1px_black]">♥</span>
+                <span className="text-white drop-shadow-sm [-webkit-text-stroke:1px_black]">♥</span>
+                <span className="text-yellow-400 [-webkit-text-stroke:1px_black]">♥</span>
+              </div>
+            </AnimatedContent>
+
+            {/* Headline: Blau Weiß */}
+            <AnimatedContent
+              distance={100}
+              direction="vertical"
+              reverse={true}
+              duration={1.2}
+              ease="power3.out"
+              initialOpacity={0.0}
+              animateOpacity
+              scale={1.1}
+              threshold={0.2}
+              delay={0.3}
+            >
+              <h1 className="text-2xl sm:text-4xl pt-10 leading-none font-light tracking-tight">Blau Weiß</h1>
+            </AnimatedContent>
+
+            {/* GOLD via TextPressure */}
+            <AnimatedContent
+              distance={100}
+              direction="vertical"
+              reverse={true}
+              duration={1.2}
+              ease="power3.out"
+              initialOpacity={0.0}
+              animateOpacity
+              scale={1.1}
+              threshold={0.2}
+              delay={0.5}
+            >
+              <div className="w-40 sm:w-auto mx-auto">
+              <TextPressure
+                text="GOLD"
+                flex={true}
+                alpha={false}
+                scale={false}
+                stroke={false}
+                width={true}
+                weight={true}
+                italic={true}
+                textColor="#ffffff"
+                strokeColor="#ff0000"
+                className="leading-none font-light tracking-tight mt-1"
+                minFontSize={20}
+              />
+              </div>
+            </AnimatedContent>
+
+            {/* Subtext */}
+            <AnimatedContent
+              distance={100}
+              direction="horizontal"
+              reverse={true}
+              duration={1.2}
+              ease="power3.out"
+              initialOpacity={0.0}
+              animateOpacity
+              scale={1.1}
+              threshold={0.2}
+              delay={0.9}
+            >
+              <p className="mt-4 text-base">
+                Von vertrauten Hobby-Treffen bis zu ikonischen Spielmomenten
+              </p>
+            </AnimatedContent>
+          </div>
+
+          
+          <div
+              className={`relative w-full mt-8 ${
+                !isSmartphone ? "max-w-md" : "max-w-sm"
+              }`}
+            >
+              <AnimatedContent
+                distance={100}
+                direction="vertical"
+                reverse={true}
+                duration={1.2}
+                ease="power3.out"
+                initialOpacity={0.2}
+                animateOpacity
+                scale={1.1}
+                threshold={0.2}
+                delay={0.3}
+              >
+                <img
+                  src="Teamfoto.jpeg"
+                  alt="ABB"
+                  className="rounded-lg object-cover w-full shadow-2xl"
+                />
+              </AnimatedContent>
+              {!isSmartphone && (
+                <CircularText
+                  text="Kleinfeld Turnier · Leisach · 2025 · "
+                  onHover="speedUp"
+                  spinDuration={20}
+                  className="text-sm bottom-30 left-40 rotate-12"
+                />
+              )}
+            </div>
+            
+            </section>
+
+
+      <section className="w-full bg-[#FDF6F2] py-8 mt-12">
+
+          <AnimatedContent
+            distance={100}
+            direction="vertical"
+            reverse={false}
+            duration={1.2}
+            ease="power3.out"
+            initialOpacity={0}
+            animateOpacity
+            scale={1}
+            threshold={0.2}
+            delay={0.2}
+          >
+            <div className="max-w-sm mx-auto text-center space-y-4">
+
+  
+            <ScrollVelocity
+              texts={[
+                <>
+                  Season 2017 <BlueCheck /> Season 2018 <BlueCheck /> Season 2021 <BlueCheck />
+                </>,
+                <>
+                  Season 2022 <BlueCheck /> Season 2023 <BlueCheck /> Season 2024 <BlueCheck /> Season 2025 <BlueCheck />
+                </>,
+              ]}
+              velocity={30}
+              className="custom-scroll-text text-lg"
+            />
+
+
+              {/* 2026 “loading” */}
+              <div className="flex items-center justify-center space-x-2 text-2xl">
+              
+                <FuzzyText 
+                baseIntensity={0.075} 
+                hoverIntensity={0.2}
+                color="#fffff"
+                fontSize={24}
+                >
+
+                  Season 2026 - loading
+
+                </FuzzyText>
+              </div>
+              
+            </div>
+            
+          </AnimatedContent>
+          
+        </section>
+            
+        </main>
         
-        <div className="text-center">
-          <BlurText
-            text="About Mobile - Coming Soon!"
-            delay={150}
-            animateBy="words"
-            direction="top"
-            onAnimationComplete={handleAnimationComplete}
-            className="text-4xl sm:text-5xl font-bold text-white drop-shadow-lg"
-          />
-        </div>
-      </main>
       )}
     </>
   );
