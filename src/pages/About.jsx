@@ -549,7 +549,7 @@ export default function Contact() {
                 threshold={-0.2}
                 delay={0.1}
               >
-                <p className="text-base text-gray-700 mt-4">
+                <p className="text-sm text-gray-700 mt-4">
                   ABB ist kein Look.<br/>
                   ABB ist eine Haltung.
                 </p>
