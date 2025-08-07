@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import Header from "../components/Header";
 import Beams from "../components/Beams";
 import BlurText from "../components/BlurText";
@@ -9,12 +8,36 @@ import TextPressure from "../components/TextPressure";
 import ScrollVelocity from '../components/ScrollVelocity';
 import FuzzyText from '../components/FuzzyText';
 import BlueCheck from "../components/BlueCheck";
+import { useState, useEffect, useRef } from 'react';
 
+function useOnScreen(ref, threshold = 0.2) {
+  const [isVisible, setIsVisible] = useState(false);
+  useEffect(() => {
+    if (!ref.current) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          obs.disconnect();
+        }
+      },
+      { threshold }
+    );
+    obs.observe(ref.current);
+    return () => obs.disconnect();
+  }, [ref, threshold]);
+  return isVisible;
+}
 
 export default function Contact() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const [isSmartphone, setIsSmartphone] = useState(window.innerWidth < 640);
   const [lineVisible, setLineVisible] = useState(false);
+  const line1Ref = useRef(null);
+  const line2Ref = useRef(null);
+  const line1Visible = useOnScreen(line1Ref);
+  const line2Visible = useOnScreen(line2Ref);
+
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -434,6 +457,118 @@ export default function Contact() {
             
           </AnimatedContent>
           
+          <div className="px-5">
+          <div className="mt-16 space-y-12">
+            {/* Block 1: image left, text right */}
+            <div className="flex items-center gap-x-4">
+              <div className="w-1/2">
+              <AnimatedContent
+              distance={100}
+              direction="horizontal"
+              reverse={true}
+              duration={1.2}
+              ease="power3.out"
+              initialOpacity={0.0}
+              animateOpacity
+              scale={1.1}
+              threshold={0.2}
+              delay={0.1}
+            >
+              <img
+                  src="abb1.jpeg"
+                  alt="Portrait 1"
+                  className="w-full h-auto object-cover rounded-lg aspect-[3/4]"
+                />
+            </AnimatedContent>
+                
+              </div>
+              <div className="w-1/2">
+                {/* underline draws left→right when scrolled into view */}
+                <div
+                  ref={line1Ref}
+                  className="h-[3px] bg-[#4A90E2] mt-2 origin-right"
+                  style={{
+                    width: '180px',
+                    transform: line1Visible ? 'scaleX(1)' : 'scaleX(0)',
+                    transition: 'transform 1s ease-out 2s',
+                  }}
+                />
+                <AnimatedContent
+                distance={100}
+                direction="vertical"
+                reverse={false}
+                duration={1.2}
+                ease="power3.out"
+                initialOpacity={0.0}
+                animateOpacity
+                scale={1.1}
+                threshold={0}
+                delay={0.1}
+              >
+                <p className="text-sm text-gray-700 mt-4">
+                  Athletic Binblau ist mehr als nur ein Team – es ist ein Lebensgefühl.
+                  ABB steht für Fußballkultur, Gemeinschaft und Charakter.
+                </p>
+              </AnimatedContent>
+                
+              </div>
+            </div>
+
+            {/* Block 2: image right, text left */}
+            <div className="flex items-center gap-x-4 flex-row-reverse">
+              <div className="w-1/2">
+                <AnimatedContent
+                distance={100}
+                direction="horizontal"
+                reverse={false}
+                duration={1.2}
+                ease="power3.out"
+                initialOpacity={0.0}
+                animateOpacity
+                scale={1.1}
+                threshold={0.1}
+                delay={0.1}
+              >
+              <img
+                  src="abb2.jpeg"
+                  alt="Portrait 2"
+                  className="w-full h-auto object-cover rounded-lg aspect-[3/4]"
+                /></AnimatedContent>
+                
+              </div>
+              <div className="w-1/2">
+                <AnimatedContent
+                distance={100}
+                direction="vertical"
+                reverse={false}
+                duration={1.2}
+                ease="power3.out"
+                initialOpacity={0.0}
+                animateOpacity
+                scale={1.1}
+                threshold={-0.2}
+                delay={0.1}
+              >
+                <p className="text-base text-gray-700 mt-4">
+                  ABB ist kein Look.<br/>
+                  ABB ist eine Haltung.
+                </p>
+                </AnimatedContent>
+                <div
+                  ref={line2Ref}
+                  className="h-[3px] bg-[#4A90E2] mt-2 origin-left"
+                  style={{
+                    width: '150px',
+                    transform: line2Visible ? 'scaleX(1)' : 'scaleX(0)',
+                    transition: 'transform 1s ease-out 1s',
+                    animationDelay: '1s',
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
         </section>
             
         </main>
