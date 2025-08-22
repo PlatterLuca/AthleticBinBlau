@@ -483,17 +483,7 @@ export default function Contact() {
                 
               </div>
               <div className="w-1/2">
-                {/* underline draws left→right when scrolled into view */}
-                <div
-                  ref={line1Ref}
-                  className="h-[3px] bg-[#4A90E2] mt-2 origin-right"
-                  style={{
-                    width: '180px',
-                    transform: line1Visible ? 'scaleX(1)' : 'scaleX(0)',
-                    transition: 'transform 1s ease-out 2s',
-                  }}
-                />
-                <AnimatedContent
+              <AnimatedContent
                 distance={100}
                 direction="vertical"
                 reverse={false}
@@ -505,6 +495,18 @@ export default function Contact() {
                 threshold={0}
                 delay={0.1}
               >
+              
+                {/* underline draws left→right when scrolled into view */}
+                <div
+                  ref={line1Ref}
+                  className="h-[3px] bg-[#4A90E2] mt-2 origin-right overflow-hidden"
+                  style={{
+                    width: '180px',
+                    transform: line1Visible ? 'scaleX(1)' : 'scaleX(0)',
+                    transition: 'transform 1s ease-out 2s',
+                  }}
+                />
+                
                 <p className="text-sm text-gray-700 mt-4">
                   Athletic Binblau ist mehr als nur ein Team – es ist ein Lebensgefühl.
                   ABB steht für Fußballkultur, Gemeinschaft und Charakter.
@@ -515,7 +517,7 @@ export default function Contact() {
             </div>
 
             {/* Block 2: image right, text left */}
-            <div className="flex items-center gap-x-4 flex-row-reverse">
+            <div className="flex items-center gap-x-4 flex-row-reverse overflow-hidden">
               <div className="w-1/2">
                 <AnimatedContent
                 distance={100}
@@ -553,7 +555,7 @@ export default function Contact() {
                   ABB ist kein Look.<br/>
                   ABB ist eine Haltung.
                 </p>
-                </AnimatedContent>
+                
                 <div
                   ref={line2Ref}
                   className="h-[3px] bg-[#4A90E2] mt-2 origin-left"
@@ -561,9 +563,9 @@ export default function Contact() {
                     width: '150px',
                     transform: line2Visible ? 'scaleX(1)' : 'scaleX(0)',
                     transition: 'transform 1s ease-out 1s',
-                    animationDelay: '1s',
                   }}
                 />
+                </AnimatedContent>
               </div>
             </div>
           </div>
