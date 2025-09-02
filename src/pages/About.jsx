@@ -66,7 +66,13 @@ export default function Contact() {
   return (
     <>
       {/* Background layers */}
-      <div className="fixed bg-[#FDF6F2] inset-0 -z-50"></div>
+      {isMobile ? (
+        // Mobile: beige canvas
+        <div className="fixed inset-0 -z-50 bg-[#FDF6F2]" />
+      ) : (
+        // Desktop: everything blue behind the page
+        <div className="fixed inset-0 -z-50 bg-[#4A90E2]" />
+      )}
  
 
       {/* Desktop Header */}
@@ -88,8 +94,9 @@ export default function Contact() {
 
       {/* Desktop Content */}
       {!isMobile && (
-      <main className="relative z-10 min-h-screen px-6 py-20 flex items-start justify-center text-white" style={{ backgroundColor: '#4A90E2' }}>
-        <div className="w-full max-w-7xl flex flex-col lg:flex-row items-center justify-center gap-0 relative">
+     <main className="relative z-10 min-h-screen px-6 py-20 flex items-start justify-center text-white bg-[#4A90E2]">
+
+        <div className="w-full max-w-7xl flex flex-col lg:flex-row items-center justify-center gap-0 relative" >
 
           {/* ──────────── Text Content ──────────── */}
           <div className="flex-1 space-y-8 text-center lg:text-left relative">
@@ -280,7 +287,7 @@ export default function Contact() {
       {/* Mobile Content ------------------------------------------------------------------------------------------------------- */}
       {/* Mobile Content ------------------------------------------------------------------------------------------------------- */}
       {isMobile && (
-        <main className="relative z-10">
+        <main className="relative z-10 overflow-hidden">
           <section className="w-full text-white min-h-screen flex flex-col items-center justify-start px-6 pt-20 pb-12" style={{ backgroundColor: '#4A90E2' }}>
           {/* Text Block */}
           <div className="relative w-full max-w-md text-center">
