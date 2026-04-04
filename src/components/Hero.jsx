@@ -50,13 +50,13 @@ export default function Hero() {
   return (
     <section
       className="bg-cover bg-center h-screen text-white flex flex-col"
-      style={{ backgroundImage: `url('${bgImage}')` }}
+      style={{ backgroundImage: `url('${bgImage}')` }}S
     >
       {!isMobile && (
         <div className="w-full px-12 py-6 flex justify-between items-center">
           <a href="/" className="flex items-center no-underline text-white drop-shadow-sm">
             <img src="/logo.png" alt="Athletic Binblau Logo" className="w-10 mr-3" />
-            <span className="font-bold text-lg">| ABB</span>
+            <span className="font-bold text-lg">| AKL</span>
           </a>
           <nav>
             <ul className="flex gap-8 text-white font-medium text-base">
@@ -83,7 +83,7 @@ export default function Hero() {
                   threshold={0.2}
                   delay={0.3}
                   >
-                    <h1 className="text-5xl font-bold">Athletic Binblau</h1>       
+                    <h1 className="text-5xl font-bold">Athletic Klub Lienz</h1>       
                   </AnimatedContent>
 
                   
