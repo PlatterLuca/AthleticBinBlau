@@ -1,6 +1,6 @@
 export default function Footer() {
     return (
-      <footer className="bg-gray-800 text-white text-center py-6 mt-16">
+      <footer className="bg-gray-800 text-white text-center text-size-sm py-6 mt-16">
         <div className="flex justify-center mb-2">
           <a href="https://www.instagram.com/_athletic_binblau" target="_blank" rel="noopener noreferrer" className="mx-2">
             <img src="/ig-icon.png" alt="Instagram" className="w-6 h-6 inline" />
@@ -9,7 +9,7 @@ export default function Footer() {
             <img src="/Spotify-icon.png" alt="Spotify" className="w-5 h-5 inline" />
           </a>
         </div>
-        <p>&copy; 2025 Athletic Binblau. All Rights Reserved.</p>
+        <p>&copy; 2026 Athletic Klub Lienz. All Rights Reserved.</p>
       </footer>
     )
   }

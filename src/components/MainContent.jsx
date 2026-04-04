@@ -48,8 +48,8 @@ export default function MainContent() {
         Im Herzen des Fußballs gibt es eine Kategorie von Teams, die durch ihre
         außergewöhnliche Leistung im Kleinfeldturnier-Format hervorsticht. Die
         größte Kleinfeldturnier-Mannschaft, die je gelebt hat, ist ohne Zweifel
-        die legendäre Mannschaft „Athletic BinBlau“. Obwohl erst 2017 gegründet,
-        zählt ABB im Talboden bereits zu den traditionsreichsten und
+        die legendäre Mannschaft „Athletic Klub Lienz". Obwohl erst 2017 gegründet,
+        zählt der AKL im Talboden bereits zu den traditionsreichsten und
         einflussreichsten Vereinen.
       </ScrollReveal>
 
@@ -62,9 +62,9 @@ export default function MainContent() {
         textClassName="text-md sm:text-sm md:text-lg leading-relaxed text-black"
       >
         Mit einer Mischung aus technischem Können, unermüdlichem Einsatz und
-        einem einzigartigen Teamgeist eroberte ABB die Kleinfeldturnierszene im
+        einem einzigartigen Teamgeist eroberte der AKL die Kleinfeldturnierszene im
         Sturm. Ihr Spielstil besticht durch schnelles Passspiel und kreative
-        Kombinationen, die selbst erfahrene Gegner oft ins Wanken bringen. ABB
+        Kombinationen, die selbst erfahrene Gegner oft ins Wanken bringen. Der AKL
         ist weit mehr als nur ein Team – vielmehr eine eingeschworene
         Gemeinschaft, die durch Zusammenhalt und Leidenschaft für den Fußball
         besticht.
@@ -78,11 +78,11 @@ export default function MainContent() {
         containerClassName="max-w-4xl mx-auto text-center mb-4"
         textClassName="text-md sm:text-sm md:text-lg leading-relaxed text-black"
       >
-        Besonders bemerkenswert ist, wie die Spieler von ABB ihren Siegeswillen
+        Besonders bemerkenswert ist, wie die Spieler vom AKL ihren Siegeswillen
         stets mit Fair Play und Sportsgeist verbinden. Sie begeistern Fans durch
         ihre mitreißenden Auftritte und zeigen gleichzeitig auf und neben dem
         Platz eine Verbundenheit, die ihresgleichen sucht. Trotz ihres jungen
-        Bestehens hat ABB schon jetzt ein beeindruckendes Vermächtnis
+        Bestehens hat der AKL schon jetzt ein beeindruckendes Vermächtnis
         geschaffen, das künftige Generationen von Kleinfeldfußballern prägen
         wird.
       </ScrollReveal>
@@ -95,7 +95,7 @@ export default function MainContent() {
         containerClassName="max-w-4xl mx-auto text-center"
         textClassName="text-md sm:text-sm md:text-lg leading-relaxed text-black"
       >
-        In der Geschichte dieses Sports wird der Name Athletic BinBlau für immer
+        In der Geschichte dieses Sports wird der Name Athletic Klub Lienz für immer
         leuchten – nicht nur als Synonym für Erfolg, sondern als Inbegriff einer
         Mannschaft, die den Kleinfeldfußball zu einem unvergesslichen Erlebnis
         für alle Beteiligten macht.

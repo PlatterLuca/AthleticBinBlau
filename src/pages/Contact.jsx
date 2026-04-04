@@ -14,7 +14,7 @@ const EMAIL = "AthleticKlubLienz@gmx.at";
 export default function Contact() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
-  // ✅ Typing effect: "Schreib uns eine DM"
+  // Typing effect: "Schreib uns eine DM"
   const fullDMText = "Schreib uns eine DM";
   const [typedDM, setTypedDM] = useState("");
   const [isDone, setIsDone] = useState(false); // track typing completion
@@ -39,7 +39,7 @@ export default function Contact() {
         setTypedDM(fullDMText.slice(0, i));
         if (i >= fullDMText.length) {
           clearInterval(typer);
-          setIsDone(true); // ✅ mark typing as finished
+          setIsDone(true); // mark typing as finished
         }
       }, speed);
     }, startDelay);
@@ -66,7 +66,7 @@ export default function Contact() {
         <div className="w-full text-white px-12 py-6 flex justify-between items-center">
           <a href="/" className="flex items-center no-underline drop-shadow-sm">
             <img src="/logo.png" alt="Athletic Binblau Logo" className="w-10 mr-3" />
-            <span className="font-bold text-lg">| ABB</span>
+            <span className="font-bold text-lg">| AKL</span>
           </a>
           <nav>
             <ul className="flex gap-8 font-medium text-base">
@@ -158,7 +158,7 @@ export default function Contact() {
             threshold={0.2}
             delay={0.7}
           >
-          {/* ✅ The typed sentence with cursor that disappears */}
+          {/* The typed sentence with cursor that disappears */}
           <p className="text-center text-sm mb-6 text-white">
             <span>{typedDM}</span>
             {!isDone && (

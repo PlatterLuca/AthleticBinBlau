@@ -80,7 +80,7 @@ export default function Contact() {
         <div className="w-full px-12 py-6 flex justify-between items-center" style={{ backgroundColor: '#4A90E2' }}>
           <a href="/" className="flex items-center no-underline text-white drop-shadow-sm">
             <img src="/logo.png" alt="Athletic Binblau Logo" className="w-10 mr-3" />
-            <span className="font-bold text-lg">| ABB</span>
+            <span className="font-bold text-lg">| AKL</span>
           </a>
           <nav>
             <ul className="flex gap-8 text-white font-medium text-base">
@@ -113,7 +113,7 @@ export default function Contact() {
                   threshold={0.2}
                   delay={0.3}
                   ><div className="text-lg tracking-wide font-semibold uppercase">
-                  ABB
+                  AKL
                 </div>
             </AnimatedContent>
             
@@ -515,8 +515,8 @@ export default function Contact() {
                 />
                 
                 <p className="text-sm text-gray-700 mt-4">
-                  Athletic Binblau ist mehr als nur ein Team – es ist ein Lebensgefühl.
-                  ABB steht für Fußballkultur, Gemeinschaft und Charakter.
+                  Der Athletic Klub Lienz ist mehr als nur ein Team – er ist ein Lebensgefühl.
+                  AKL steht für Fußballkultur, Gemeinschaft und Charakter.
                 </p>
               </AnimatedContent>
                 
@@ -559,8 +559,8 @@ export default function Contact() {
                 delay={0.1}
               >
                 <p className="text-sm text-gray-700 mt-4">
-                  ABB ist kein Look.<br/>
-                  ABB ist eine Haltung.
+                  AKL ist kein Look.<br/>
+                  AKL ist eine Haltung.
                 </p>
                 
                 <div

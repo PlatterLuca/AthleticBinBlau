@@ -287,7 +287,7 @@ const SectionRow = ({ group, side /* 'left' | 'right' */ }) => {
         <div className="w-full px-12 py-6 flex justify-between items-center">
           <a href="/" className="flex items-center no-underline text-black drop-shadow-sm">
             <img src="/logo.png" alt="Athletic Binblau Logo" className="w-10 mr-3" />
-            <span className="font-bold text-lg">| ABB</span>
+            <span className="font-bold text-lg">| AKL</span>
           </a>
           <nav>
             <ul className="flex gap-8 text-black font-medium text-base">
