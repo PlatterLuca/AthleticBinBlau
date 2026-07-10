@@ -34,7 +34,7 @@ const AnimatedContent = ({
       opacity: animateOpacity ? initialOpacity : 1,
     });
 
-    gsap.to(el, {
+    const tween = gsap.to(el, {
       [axis]: 0,
       scale: 1,
       opacity: 1,
@@ -51,8 +51,10 @@ const AnimatedContent = ({
     });
 
     return () => {
-      ScrollTrigger.getAll().forEach(t => t.kill());
-      gsap.killTweensOf(el);
+      // Only clean up this component's animation. Killing every ScrollTrigger
+      // here breaks sibling animations, especially under React StrictMode.
+      tween.scrollTrigger?.kill();
+      tween.kill();
     };
   }, [
     distance,

@@ -29,6 +29,112 @@ function useOnScreen(ref, threshold = 0.2) {
   return isVisible;
 }
 
+
+function FriendshipSection() {
+  return (
+    <section className="w-full bg-[#FDF6F2] text-[#071A33] px-6 py-20 md:py-28">
+      <div className="max-w-6xl mx-auto text-center">
+
+        {/* Small top label */}
+        <div className="flex items-center justify-center gap-4 mb-6">
+          <div className="hidden sm:block h-px w-32 bg-[#071A33]/30" />
+          <p className="text-xs sm:text-sm uppercase tracking-[0.35em] font-semibold text-[#071A33]">
+            Freundschaft · Osttirol
+          </p>
+          <div className="hidden sm:block h-px w-32 bg-[#071A33]/30" />
+        </div>
+
+        {/* Headline */}
+        <h2 className="text-5xl sm:text-6xl md:text-7xl font-light leading-none mb-6">
+          Brüder im{" "}
+          <span className="italic text-[#4A90E2]">
+            Geiste.
+          </span>
+        </h2>
+
+        {/* Text */}
+        <p className="max-w-3xl mx-auto text-base sm:text-lg md:text-xl leading-relaxed text-[#071A33]/85 mb-14 whitespace-pre-line">
+        {`Getrennt in den Farben,
+        vereint in der Sache.
+
+        Unsere Freunde aus Leisach.`}
+        </p>
+
+        {/* Friendship card */}
+        <div className="max-w-5xl mx-auto bg-white/80 border border-[#071A33]/10 rounded-xl shadow-xl overflow-hidden">
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] items-center">
+
+            {/* Leisach */}
+            <div className="p-10 flex flex-col items-center justify-center">
+              <img
+                src="/leisach-logo.png"
+                alt="Leisach II Logo"
+                className="w-32 h-32 object-contain mb-5"
+              />
+
+              <p className="text-xs uppercase tracking-[0.35em] text-[#4A90E2] font-semibold mb-3">
+                Sportclub
+              </p>
+
+              <h3 className="text-3xl sm:text-4xl font-light">
+                Leisach <span className="italic text-[#4A90E2]">II</span>
+              </h3>
+
+              <p className="mt-3 text-xs uppercase tracking-[0.3em] text-[#071A33]/60">
+                Leisach · Osttirol
+              </p>
+            </div>
+
+            {/* Divider */}
+            <div className="hidden md:flex h-40 w-px bg-[#071A33]/15 relative items-center justify-center">
+              <span className="absolute bg-white px-3 text-[#4A90E2] text-xl">
+                ×
+              </span>
+            </div>
+
+            <div className="md:hidden flex justify-center py-2">
+              <span className="text-[#4A90E2] text-2xl">×</span>
+            </div>
+
+            {/* AKL */}
+            <div className="p-10 flex flex-col items-center justify-center">
+              <img
+                src="/logo.png"
+                alt="Athletic Bin Blau Logo"
+                className="w-24 h-24 object-contain mb-5"
+              />
+
+              <p className="text-xs uppercase tracking-[0.35em] text-[#4A90E2] font-semibold mb-3">
+                Athletic Klub
+              </p>
+
+              <h3 className="text-3xl sm:text-4xl font-light">
+                Athletic <span className="italic text-[#4A90E2]">Klub Lienz</span>
+              </h3>
+
+              <p className="mt-3 text-xs uppercase tracking-[0.3em] text-[#071A33]/60">
+                Lienz · Osttirol
+              </p>
+            </div>
+          </div>
+
+          {/* Button */}
+          <div className="pb-10 flex justify-center">
+            <a
+              href="https://www.leisach-2.com"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center justify-center bg-[#071A33] text-white px-6 py-3 rounded-sm text-xs uppercase tracking-[0.25em] font-semibold hover:bg-[#4A90E2] transition-colors"
+            >
+              Zu den Freunden ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function Contact() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const [isSmartphone, setIsSmartphone] = useState(window.innerWidth < 640);
@@ -94,6 +200,7 @@ export default function Contact() {
 
       {/* Desktop Content */}
       {!isMobile && (
+        <>
      <main className="relative z-10 min-h-screen px-6 py-20 flex items-start justify-center text-white bg-[#4A90E2]">
 
         <div className="w-full max-w-7xl flex flex-col lg:flex-row items-center justify-center gap-0 relative" >
@@ -277,10 +384,13 @@ export default function Contact() {
              className="absolute bottom-20 right-20 rotate-12 font-semibold" //change textcolor in CircularText.jsx
           />
           </div>
-
+        
         </div>
-      </main>
 
+        
+      </main>
+      <FriendshipSection />
+      </>
       )}
 
       {/* Mobile Content ------------------------------------------------------------------------------------------------------- */}
@@ -343,7 +453,8 @@ export default function Contact() {
               <div className="w-40 sm:w-auto mx-auto">
               <TextPressure
                 text="GOLD"
-                flex={true}
+                flex={false}
+                overflowVisible
                 alpha={false}
                 scale={false}
                 stroke={false}
@@ -579,7 +690,23 @@ export default function Contact() {
         </div>
 
         </section>
-            
+        <div className="">
+                <AnimatedContent
+                distance={100}
+                direction="vertical"
+                reverse={false}
+                duration={1.2}
+                ease="power3.out"
+                initialOpacity={0.0}
+                animateOpacity
+                scale={1.1}
+                threshold={-0.2}
+                delay={0.7}
+              >
+                <FriendshipSection/>
+              </AnimatedContent>
+          
+          </div>
         </main>
         
       )}

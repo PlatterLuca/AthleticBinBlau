@@ -11,6 +11,7 @@ const TextPressure = ({
   alpha = false,
 
   flex = true,
+  overflowVisible = false,
   stroke = false,
   scale = false,
 
@@ -20,6 +21,7 @@ const TextPressure = ({
   className = '',
 
   minFontSize = 24,
+  fontSizeScale = 1,
 }) => {
   const containerRef = useRef(null);
   const titleRef = useRef(null);
@@ -43,8 +45,8 @@ const TextPressure = ({
   // Track cursor position
   useEffect(() => {
     const handleMouseMove = (e) => {
-      cursorRef.current.x = left + width / 2;
-      cursorRef.current.y = top + height / 2;
+      cursorRef.current.x = e.clientX;
+      cursorRef.current.y = e.clientY;
     };
     const handleTouchMove = (e) => {
       cursorRef.current.x = 0;
@@ -73,7 +75,7 @@ const TextPressure = ({
     if (!containerRef.current || !titleRef.current) return;
 
     const { width: containerW, height: containerH } = containerRef.current.getBoundingClientRect();
-    let newFontSize = containerW / (chars.length / 2);
+    let newFontSize = (containerW / (chars.length / 2)) * fontSizeScale;
     newFontSize = Math.max(newFontSize, minFontSize);
 
     setFontSize(newFontSize);
@@ -96,7 +98,7 @@ const TextPressure = ({
     window.addEventListener('resize', setSize);
     return () => window.removeEventListener('resize', setSize);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [scale, text]);
+  }, [scale, text, fontSizeScale]);
 
   // Main animation loop, but only for the first 0.5 s
   useEffect(() => {
@@ -154,7 +156,9 @@ const TextPressure = ({
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-full overflow-hidden bg-transparent"
+      className={`relative w-full h-full bg-transparent ${
+        overflowVisible ? 'overflow-visible' : 'overflow-hidden'
+      }`}
     >
       <style>{`
         @font-face {
@@ -187,11 +191,15 @@ const TextPressure = ({
           fontFamily,
           fontSize,
           lineHeight,
-          transform: `scale(1, ${scaleY})`,
+          transform: `${flex ? '' : 'translateX(-50%) '}scale(1, ${scaleY})`,
           transformOrigin: 'center top',
+          position: flex ? undefined : 'relative',
+          left: flex ? undefined : '50%',
+          width: flex ? undefined : 'max-content',
           margin: 0,
           fontWeight: 100,
           color: stroke ? undefined : textColor,
+          whiteSpace: 'nowrap',
         }}
       >
         {chars.map((char, i) => (
@@ -199,7 +207,7 @@ const TextPressure = ({
             key={i}
             ref={(el) => (spansRef.current[i] = el)}
             data-char={char}
-            className="inline-block"
+            className="inline-block shrink-0"
           >
             {char}
           </span>
