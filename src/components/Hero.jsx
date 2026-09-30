@@ -3,7 +3,7 @@ import Header from './Header';
 import AnimatedContent from "../components/AnimatedContent"
 
 export default function Hero() {
-  const [bgImage, setBgImage] = useState('/abb_start.png');
+  const [bgImage, setBgImage] = useState('/abb_start.jpg');
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   const phrases = ['nur Athletic', 'alles Gold'];
@@ -15,7 +15,7 @@ export default function Hero() {
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
-      setBgImage(window.innerWidth < 768 ? '/abb_mobile_licht_hell.png' : '/abb_start.png');
+      setBgImage(window.innerWidth < 768 ? '/abb_mobile_licht_hell.png' : '/abb_start.jpg');
     };
 
     handleResize();
@@ -60,9 +60,10 @@ export default function Hero() {
           </a>
           <nav>
             <ul className="flex gap-8 text-white font-medium text-base">
+              <li><a href="/" className="hover:underline">Home</a></li>
               <li><a href="/team" className="hover:underline">Team</a></li>
               <li><a href="/about" className="hover:underline">About</a></li>
-              <li><a href="/contact" className="hover:underline">Contact</a></li>
+              <li><a href="/contact" className="hover:underline">Kontakt</a></li>
             </ul>
           </nav>
         </div>

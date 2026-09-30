@@ -1,278 +1,76 @@
-// src/pages/Contact.jsx
-import { useState, useEffect } from "react";
-import Header from "../components/Header";
-import Silk from "../components/Silk";
-import BlurText from "../components/BlurText";
-import AnimatedContent from "../components/AnimatedContent";
-
-// ─────────────────────────────────────────────────────────────────────────────
-// CONFIG
-const IG_HANDLE = "_athletic_binblau";
-const IG_URL = `https://instagram.com/${IG_HANDLE}`;
-const EMAIL = "AthleticKlubLienz@gmx.at";
-
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import AnimatedContent from '../components/AnimatedContent';
+const EMAIL = 'AthleticKlubLienz@gmx.at';
 export default function Contact() {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-
-  // Typing effect: "Schreib uns eine DM"
-  const fullDMText = "Schreib uns eine DM";
-  const [typedDM, setTypedDM] = useState("");
-  const [isDone, setIsDone] = useState(false); // track typing completion
-
-  // copy-to-clipboard state
-  const [copied, setCopied] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  useEffect(() => {
-    let i = 0;
-    const startDelay = 1500; // delay before typing starts (ms)
-    const speed = 80;        // typing speed (ms per char)
-
-    const starter = setTimeout(() => {
-      const typer = setInterval(() => {
-        i += 1;
-        setTypedDM(fullDMText.slice(0, i));
-        if (i >= fullDMText.length) {
-          clearInterval(typer);
-          setIsDone(true); // mark typing as finished
-        }
-      }, speed);
-    }, startDelay);
-
-    return () => clearTimeout(starter);
-  }, []);
-
-  const onCopyEmail = async () => {
-    try {
-      await navigator.clipboard.writeText(EMAIL);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1500);
-    } catch {
-      // no-op
-    }
-  };
-  return (
-    <>
-      {/* ──────────── Background ──────────── */}
-      <div className="fixed inset-0 -z-50 bg-[#4A90E2]"></div>
-
-      {/* ──────────── Header (desktop only) ──────────── */}
-      {!isMobile && (
-        <div className="w-full text-white px-12 py-6 flex justify-between items-center">
-          <a href="/" className="flex items-center no-underline drop-shadow-sm">
-            <img src="/logo.png" alt="Athletic Binblau Logo" className="w-10 mr-3" />
-            <span className="font-bold text-lg">| AKL</span>
-          </a>
-          <nav>
-            <ul className="flex gap-8 font-medium text-base">
+  const [copyStatus, setCopyStatus] = useState('');
+  async function copyEmail() {
+    try { await navigator.clipboard.writeText(EMAIL); setCopyStatus('E-Mail-Adresse kopiert.'); }
+    catch { setCopyStatus('Bitte die E-Mail-Adresse markieren und manuell kopieren.'); }
+  }
+  return <div className="club-page club-contact">
+      <div className="hidden md:flex w-full px-12 py-6 justify-between items-center text-[#071A33]">
+        <a href="/" className="flex items-center no-underline drop-shadow-sm">
+          <img src="/logo.png" alt="Athletic Binblau Logo" className="w-10 mr-3" />
+          <span className="font-bold text-lg">| AKL</span>
+        </a>
+        <nav><ul className="flex gap-8 font-medium text-base">
+          <li><a href="/" className="hover:underline">Home</a></li>
               <li><a href="/team" className="hover:underline">Team</a></li>
-              <li><a href="/about" className="hover:underline">About</a></li>
-              <li><a href="/contact" className="hover:underline underline decoration-2">Contact</a></li>
-            </ul>
-          </nav>
+          <li><a href="/about" className="hover:underline">About</a></li>
+          <li><a href="/contact" className="hover:underline">Kontakt</a></li>
+        </ul></nav>
+      </div>
+<div className="club-container club-section">
+    <AnimatedContent distance={60} reverse duration={1.1} delay={0.15}>
+    <div className="club-section-heading"><h1>Schreib uns</h1><p>Eine Frage zum Verein oder eine Einladung zum Turnier? Hier erreicht ihr uns.</p></div>
+    </AnimatedContent>
+    <div className="club-contact-grid">
+      <div className="club-contact-options">
+        <AnimatedContent distance={50} duration={1} delay={0.25}>
+          <section className="club-contact-card"><p className="club-eyebrow">Direkter Kontakt</p><h2>Schreibt uns.</h2><p>Für Turniere, Vereinsfragen und alles Weitere.</p><a className="club-email" href={`mailto:${EMAIL}`}>{EMAIL}</a><div className="club-contact-actions">
+            <a className="club-text-link" href={`mailto:${EMAIL}`}>E-Mail schreiben</a>
+            <button className="club-copy" type="button" onClick={copyEmail}>Adresse kopieren</button>
+          </div><p className="club-copy-status" role="status">{copyStatus}</p></section>
+        </AnimatedContent>
+        <AnimatedContent distance={50} duration={1} delay={0.35}>
+          <section className="club-contact-feature">
+            <p className="club-eyebrow">Lienz · Osttirol</p>
+            <h2>Athletic Klub Lienz.</h2>
+            <p>Fußball unter Freunden. Zu Hause in Osttirol.</p>
+            <img
+              src="/Teamfoto.jpeg"
+              alt="Die Mannschaft des Athletic Klub Lienz"
+              className="w-full rounded-lg mb-6"
+              loading="lazy"
+            />
+            <Link className="club-text-link" to="/about">
+              Mehr über den Verein
+            </Link>
+          </section>
+        </AnimatedContent>
+      </div>
+    <section className="club-contact-feed" aria-label="Instagram Feed">
+      <AnimatedContent distance={60} duration={1} delay={0.15}>
+        <div className="club-feed-heading">
+          <p className="club-eyebrow">Aus dem Vereinsleben</p>
+          <h2>Auch auf Instagram.</h2>
+          <p>Bilder vom Platz und Nachrichten direkt an uns.</p>
         </div>
-      )}
-
-      {/* ──────────── Page Content ──────────── */}
-      <main className="relative z-10 min-h-screen py-24 md:py-5 px-6 md:px-20">
-        <div className="flex flex-col items-center mb-12">
-          <AnimatedContent
-            distance={100}
-            direction="vertical"
-            reverse
-            duration={1.2}
-            ease="power3.out"
-            initialOpacity={0.0}
-            animateOpacity
-            scale={1.1}
-            threshold={0.2}
-            delay={0.7}
-          >
-            <h1 className="text-4xl sm:text-5xl font-bold text-white drop-shadow-lg">Contact</h1>
-          </AnimatedContent>
-          <div
-            className="h-[3px] bg-white mt-2 origin-right"
-            style={{
-              width: "180px",
-              transform: "scaleX(0)",
-              animation: "draw-underline 1s ease-out forwards",
-              animationDelay: "1s",
-            }}
+        <div className="relative w-full" style={{ paddingTop: '130%' }}>
+          <iframe
+            src="https://lightwidget.com/widgets/b117544e658a5e9a942a01c906235be8.html"
+            className="absolute inset-0 w-full h-full lightwidget-widget bg-[#FDF6F2]"
+            style={{ border: 0, overflow: 'hidden' }}
+            loading="lazy"
+            title="Instagram Feed des Athletic Klub Lienz"
           />
         </div>
-
-        {/* ──────────── Typed line + IG feed ──────────── */}
-        <section className="max-w-5xl mx-auto mt-10">
-          
-          <AnimatedContent
-              distance={100}
-              direction="horizontal"
-              reverse={true}
-              duration={1.2}
-              ease="power3.out"
-              initialOpacity={0.0}
-              animateOpacity
-              scale={1.1}
-              threshold={0.2}
-              delay={1.2}
-            >
-              <div className="absolute top-0 left-0 flex gap-2 text-2xl">
-                <span className="text-transparent [-webkit-text-stroke:1px_black]">♥</span>
-                <span className="text-white drop-shadow-sm [-webkit-text-stroke:1px_black]">♥</span>
-                <span className="text-yellow-400 [-webkit-text-stroke:1px_black]">♥</span>
-              </div>
-            </AnimatedContent>
-
-            <AnimatedContent
-              distance={100}
-              direction="horizontal"
-              reverse={false}
-              duration={1.2}
-              ease="power3.out"
-              initialOpacity={0.0}
-              animateOpacity
-              scale={1.1}
-              threshold={0.2}
-              delay={1.2}
-            >
-              <div className="absolute top-0 right-0 flex gap-2 text-2xl">
-                <span className="text-transparent [-webkit-text-stroke:1px_black]">♥</span>
-                <span className="text-white drop-shadow-sm [-webkit-text-stroke:1px_black]">♥</span>
-                <span className="text-yellow-400 [-webkit-text-stroke:1px_black]">♥</span>
-              </div>
-            </AnimatedContent>
-          <AnimatedContent
-            distance={100}
-            direction="vertical"
-            reverse
-            duration={1.2}
-            ease="power3.out"
-            initialOpacity={0.0}
-            animateOpacity
-            scale={1.1}
-            threshold={0.2}
-            delay={0.7}
-          >
-          {/* The typed sentence with cursor that disappears */}
-          <p className="text-center text-sm mb-6 text-white">
-            <span>{typedDM}</span>
-            {!isDone && (
-              <span
-                className="border-r-2 border-white ml-1 inline-block align-middle"
-                style={{ animation: "1s step-end infinite",
-                         
-                 }}
-              >
-              </span>
-            )}
-          </p>
-
-          {/* Instagram Feed */}
-          
-            <div className="relative w-full" style={{ paddingTop: "130%" }}>
-              <iframe
-                src="https://lightwidget.com/widgets/b117544e658a5e9a942a01c906235be8.html"
-                allowTransparency={true}
-                className="absolute inset-0 w-full h-full rounded-2xl shadow-md lightwidget-widget bg-[#FDF6F2]"
-                style={{ border: 0, overflow: "hidden" }}
-                loading="lazy"
-                title="Instagram Feed"
-              ></iframe>
-            </div>
-          </AnimatedContent>
-
-          <AnimatedContent
-          distance={80}
-          direction="vertical"
-          reverse={false}
-          duration={1.0}
-          ease="power3.out"
-          initialOpacity={0.0}
-          animateOpacity
-          scale={1.02}
-          threshold={0.2}
-          delay={0.4}
-        >
-          <div className="mt-8 sm:mt-10 mx-auto max-w-3xl">
-            <div
-              className="
-                rounded-2xl shadow-lg p-5 sm:p-6
-                bg-[#6FB1F0]/30 text-white
-                sm:border sm:border-white/20 sm:bg-white/10 sm:backdrop-blur
-              "
-            >
-              <div className="flex flex-col items-center text-center gap-4 sm:flex-row sm:items-center sm:justify-between sm:text-left">
-                {/* Left: icon + text */}
-                <div className="flex items-center gap-3">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    width="28"
-                    height="28"
-                    aria-hidden="true"
-                    className="opacity-90"
-                    fill="currentColor"
-                  >
-                    <path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 2v.01L12 13 4 6.01V6h16zM4 18V8.236l7.382 5.9a1 1 0 001.236 0L20 8.236V18H4z" />
-                  </svg>
-                  <div>
-                    <div className="text-sm opacity-90">Oder per E-Mail</div>
-                    <a
-                      href={`mailto:${EMAIL}`}
-                      className="text-lg sm:text-xl font-semibold underline decoration-2 underline-offset-4 break-all hover:opacity-90"
-                      aria-label={`E-Mail an ${EMAIL} senden`}
-                    >
-                      {EMAIL}
-                    </a>
-                  </div>
-                </div>
-
-                {/* Right: actions */}
-                <div className="flex w-full sm:w-auto flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:justify-end">
-                  <a
-                    href={`mailto:${EMAIL}`}
-                    className="
-                      rounded-xl px-4 py-2 font-semibold shadow text-center
-                      bg-white text-black
-                      hover:bg-white/80 active:scale-[0.99] transition
-                      w-full sm:w-auto
-                    "
-                  >
-                    Mail schreiben
-                  </a>
-                  <button
-                    type="button"
-                    onClick={onCopyEmail}
-                    className="
-                      rounded-xl px-4 py-2 font-medium text-center
-                      border border-white/30 hover:bg-white/10
-                      active:scale-[0.99] transition
-                      w-full sm:w-auto
-                    "
-                  >
-                    {copied ? "Kopiert!" : "Kopieren"}
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </AnimatedContent>
-
-        </section>
-      </main>
-
-      {/* caret blink animation */}
-      <style>{`
-        @keyframes blink { 50% { opacity: 0; } }
-        @media (prefers-reduced-motion: reduce) {
-          [style*="animation: blink"] { animation: none !important; }
-        }
-      `}</style>
-    </>
-  );
+        <a className="club-text-link" href="https://www.instagram.com/athleticklublienz" target="_blank" rel="noreferrer">
+          Instagram öffnen
+        </a>
+      </AnimatedContent>
+    </section>
+    </div>
+  </div></div>;
 }

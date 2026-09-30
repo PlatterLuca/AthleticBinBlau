@@ -1,7 +1,3 @@
-import Header from "../components/Header";
-import Beams from "../components/Beams";
-import BlurText from "../components/BlurText";
-import Silk from "../components/Silk";
 import AnimatedContent from "../components/AnimatedContent";
 import CircularText from '../components/CircularText';
 import TextPressure from "../components/TextPressure";
@@ -9,6 +5,7 @@ import ScrollVelocity from '../components/ScrollVelocity';
 import FuzzyText from '../components/FuzzyText';
 import BlueCheck from "../components/BlueCheck";
 import { useState, useEffect, useRef } from 'react';
+import ClubHistory from '../components/ClubHistory';
 
 function useOnScreen(ref, threshold = 0.2) {
   const [isVisible, setIsVisible] = useState(false);
@@ -124,9 +121,9 @@ function FriendshipSection() {
               href="https://www.leisach-2.com"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center justify-center bg-[#071A33] text-white px-6 py-3 rounded-sm text-xs uppercase tracking-[0.25em] font-semibold hover:bg-[#4A90E2] transition-colors"
+              className="club-text-link"
             >
-              Zu den Freunden ↗
+              Zu den Freunden
             </a>
           </div>
         </div>
@@ -135,24 +132,15 @@ function FriendshipSection() {
   );
 }
 
-export default function Contact() {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-  const [isSmartphone, setIsSmartphone] = useState(window.innerWidth < 640);
-  const [lineVisible, setLineVisible] = useState(false);
+export default function About() {
   const line1Ref = useRef(null);
   const line2Ref = useRef(null);
   const line1Visible = useOnScreen(line1Ref);
   const line2Visible = useOnScreen(line2Ref);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [isSmartphone, setIsSmartphone] = useState(window.innerWidth < 640);
 
 
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setLineVisible(true);
-    }, 200);
-    return () => clearTimeout(timeout);
-  }, []);
-
-  
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
     window.addEventListener('resize', handleResize);
@@ -164,10 +152,6 @@ export default function Contact() {
     window.addEventListener('resize', handleResizeForSmartphones);
     return () => window.removeEventListener('resize', handleResizeForSmartphones);
   }, []);
-
-  const handleAnimationComplete = () => {
-    console.log('Animation completed!');
-  };
 
   return (
     <>
@@ -190,217 +174,19 @@ export default function Contact() {
           </a>
           <nav>
             <ul className="flex gap-8 text-white font-medium text-base">
+              <li><a href="/" className="hover:underline">Home</a></li>
               <li><a href="/team" className="hover:underline">Team</a></li>
               <li><a href="/about" className="hover:underline">About</a></li>
-              <li><a href="/contact" className="hover:underline">Contact</a></li>
+              <li><a href="/contact" className="hover:underline">Kontakt</a></li>
             </ul>
           </nav>
         </div>
       )}
 
-      {/* Desktop Content */}
-      {!isMobile && (
-        <>
-     <main className="relative z-10 min-h-screen px-6 py-20 flex items-start justify-center text-white bg-[#4A90E2]">
-
-        <div className="w-full max-w-7xl flex flex-col lg:flex-row items-center justify-center gap-0 relative" >
-
-          {/* ──────────── Text Content ──────────── */}
-          <div className="flex-1 space-y-8 text-center lg:text-left relative">
-          <div className="relative inline-block">
-            <AnimatedContent
-                  distance={100}
-                  direction="horizontal"
-                  reverse={true}
-                  duration={1.2}
-                  ease="power3.out"
-                  initialOpacity={0.0}
-                  animateOpacity
-                  scale={1.1}
-                  threshold={0.2}
-                  delay={0.3}
-                  ><div className="text-lg tracking-wide font-semibold uppercase">
-                  AKL
-                </div>
-            </AnimatedContent>
-            
-
-            
-
-            <AnimatedContent
-                  distance={100}
-                  direction="horizontal"
-                  reverse={false}
-                  duration={1.2}
-                  ease="power3.out"
-                  initialOpacity={0.0}
-                  animateOpacity
-                  scale={1.1}
-                  threshold={0.2}
-                  delay={0.7}
-                  ><div className="absolute -top-10 right-0 flex gap-2 text-2xl">
-                  {/* blue hollow heart */}
-                  <span className="text-transparent [-webkit-text-stroke:1px_black] [text-stroke:1px_black]">
-                    ♥
-                  </span>
-                
-                  {/* white filled + outline */}
-                  <span className="text-white drop-shadow-sm [-webkit-text-stroke:1px_black] [text-stroke:1px_black]">
-                    ♥
-                  </span>
-                
-                  {/* yellow filled + outline */}
-                  <span className="text-yellow-400 [-webkit-text-stroke:1px_black] [text-stroke:1px_black]">
-                    ♥
-                  </span>
-                </div>
-            </AnimatedContent>
-            
-              <div className="text-center">
-              
-                <AnimatedContent
-                  distance={100}
-                  direction="vertical"
-                  reverse={true}
-                  duration={1.2}
-                  ease="power3.out"
-                  initialOpacity={0.0}
-                  animateOpacity
-                  scale={1.1}
-                  threshold={0.2}
-                  delay={0.3}
-                  ><h1 className="text-[6rem] leading-none font-light tracking-tight  pl-4">Blau Weiß</h1>
-                </AnimatedContent>
-              </div>
-            
-              <div className="text-center">
-                <AnimatedContent
-                  distance={100}
-                  direction="vertical"
-                  reverse={true}
-                  duration={1.2}
-                  ease="power3.out"
-                  initialOpacity={0.0}
-                  animateOpacity
-                  scale={1.1}
-                  threshold={0.2}
-                  delay={0.3}
-                  >
-                    <div style={{position: 'relative', height: '300px'}}>
-
-              <TextPressure //customized function, no animation after 100 ms for strecheffect. Probably inefficient as fuck
-                text="GOLD"
-                flex={true}
-                alpha={false}
-                stroke={false}
-                width={true}
-                weight={true}
-                italic={true}
-                textColor="#ffffff"
-                strokeColor="#ff0000"
-                className="text-[6rem] leading-none font-light tracking-tight  pl-4"
-                minFontSize={36}
-              />
-              </div>
-                </AnimatedContent>
-              </div>
-              
-              
-            
-
-            <AnimatedContent
-                  distance={100}
-                  direction="horizontal"
-                  reverse={true}
-                  duration={1.2}
-                  ease="power3.out"
-                  initialOpacity={0.0}
-                  animateOpacity
-                  scale={1.1}
-                  threshold={0.2}
-                  delay={0.3}
-                  ><p className="text-xl max-w-md mx-auto lg:mx-0">
-                  Von vertrauten Hobby-Treffen bis zu ikonischen Spielmomenten
-                  </p>
-            </AnimatedContent>
-            </div>
-
-            {/* Horizontal Line */}
-            <div
-              className={`hidden lg:block absolute top-[50%] right-[-0.5rem] h-[4px] bg-white z-20 transition-all duration-1000 ease-out origin-left transform`}
-              style={{
-                width: lineVisible ? '180px' : '0px',
-                transform: 'scaleX(0)',
-                animation: 'draw-underline 1s ease-out forwards',
-                animationDelay: '0.5s',
-              }}
-            ></div>
-
-          </div>
-
-          {/* ──────────── Image ──────────── */}
-          <div className="flex-1 flex justify-left relative -ml-10">
-          <AnimatedContent
-          distance={100}
-          direction="vertical"
-          reverse={true}
-          duration={1.2}
-          ease="power3.out"
-          initialOpacity={0.2}
-          animateOpacity
-          scale={1.1}
-          threshold={0.2}
-          delay={0.3}
-          >
-          <div><img
-              src="Teamfoto.jpeg"
-              alt="ABB"
-              className="
-                rounded-lg object-cover shadow-2xl
-
-                /* Base/mobile: full width of its container */
-                w-full  
-
-                /* sm: up to 600px */
-                sm:max-w-[600px]
-
-                /* md: up to 800px */
-                md:max-w-[800px]
-
-                /* lg: up to 1200px */
-                lg:max-w-[1200px]
-
-                /* xl and above: up to 1600px */
-                xl:max-w-[3000px]
-              "
-            /></div>
-
-          </AnimatedContent>
-            
-          <CircularText
-            text="Kleinfeld Turnier · Leisach · 2025 · "
-            onHover="speedUp"
-            spinDuration={20}
-             className="absolute bottom-20 right-20 rotate-12 font-semibold" //change textcolor in CircularText.jsx
-          />
-          </div>
-        
-        </div>
-
-        
-      </main>
-      <FriendshipSection />
-      </>
-      )}
-
-      {/* Mobile Content ------------------------------------------------------------------------------------------------------- */}
-      {/* Mobile Content ------------------------------------------------------------------------------------------------------- */}
-      {/* Mobile Content ------------------------------------------------------------------------------------------------------- */}
-      {isMobile && (
-        <main className="relative z-10 overflow-hidden">
-          <section className="w-full text-white min-h-screen flex flex-col items-center justify-start px-6 pt-20 pb-12" style={{ backgroundColor: '#4A90E2' }}>
+        <div className="about-original relative z-10 overflow-hidden">
+          <section className="about-original-hero w-full text-white min-h-screen flex flex-col items-center justify-start px-6 pt-20 pb-12" style={{ backgroundColor: '#4A90E2' }}>
           {/* Text Block */}
-          <div className="relative w-full max-w-md text-center">
+          <div className="about-original-title relative w-full max-w-md text-center">
             {/* Animate Hearts */}
             <AnimatedContent
               distance={100}
@@ -490,7 +276,7 @@ export default function Contact() {
 
           
           <div
-              className={`relative w-full mt-8 ${
+              className={`about-original-photo relative w-full mt-8 ${
                 !isSmartphone ? "max-w-md" : "max-w-sm"
               }`}
             >
@@ -507,7 +293,7 @@ export default function Contact() {
                 delay={0.3}
               >
                 <img
-                  src="Teamfoto.jpeg"
+                  src="/Teamfoto.jpeg"
                   alt="ABB"
                   className="rounded-lg object-cover w-full shadow-2xl"
                 />
@@ -517,7 +303,7 @@ export default function Contact() {
                   text="Kleinfeld Turnier · Leisach · 2025 · "
                   onHover="speedUp"
                   spinDuration={20}
-                  className="text-sm bottom-30 left-40 rotate-12"
+                  className="about-original-stamp text-sm rotate-12"
                 />
               )}
             </div>
@@ -525,7 +311,7 @@ export default function Contact() {
             </section>
 
 
-      <section className="w-full bg-[#FDF6F2] py-8 mt-12">
+      <section className="about-original-story w-full bg-[#FDF6F2] py-8 mt-12">
 
           <AnimatedContent
             distance={100}
@@ -539,7 +325,7 @@ export default function Contact() {
             threshold={0.2}
             delay={0.2}
           >
-            <div className="max-w-sm mx-auto text-center space-y-4">
+            <div className="about-original-seasons max-w-sm mx-auto text-center space-y-4">
 
   
             <ScrollVelocity
@@ -548,7 +334,7 @@ export default function Contact() {
                   Season 2017 <BlueCheck /> Season 2018 <BlueCheck /> Season 2021 <BlueCheck />
                 </>,
                 <>
-                  Season 2022 <BlueCheck /> Season 2023 <BlueCheck /> Season 2024 <BlueCheck /> Season 2025 <BlueCheck />
+                  Season 2022 <BlueCheck /> Season 2023 <BlueCheck /> Season 2024 <BlueCheck /> Season 2025 <BlueCheck /> Season 2026 <BlueCheck />
                 </>,
               ]}
               velocity={30}
@@ -556,7 +342,7 @@ export default function Contact() {
             />
 
 
-              {/* 2026 “loading” */}
+              {/* 2027 “loading” */}
               <div className="flex items-center justify-center space-x-2 text-2xl">
               
                 <FuzzyText 
@@ -566,7 +352,7 @@ export default function Contact() {
                 fontSize={24}
                 >
 
-                  Season 2026 - loading
+                  Season 2027 - loading
 
                 </FuzzyText>
               </div>
@@ -576,7 +362,7 @@ export default function Contact() {
           </AnimatedContent>
           
           <div className="px-5">
-          <div className="mt-16 space-y-12">
+          <div className="about-original-moments mt-16 space-y-12">
             {/* Block 1: image left, text right */}
             <div className="flex items-center gap-x-4">
               <div className="w-1/2">
@@ -593,7 +379,7 @@ export default function Contact() {
               delay={0.1}
             >
               <img
-                  src="abb1.jpeg"
+                  src="/abb1.jpeg"
                   alt="Portrait 1"
                   className="w-full h-auto object-cover rounded-lg aspect-[3/4]"
                 />
@@ -626,7 +412,7 @@ export default function Contact() {
                 />
                 
                 <p className="text-sm text-gray-700 mt-4">
-                  Der Athletic Klub Lienz ist mehr als nur ein Team – er ist ein Lebensgefühl.
+                  Der Athletic Klub Lienz ist mehr als nur ein Team - er ist ein Lebensgefühl.
                   AKL steht für Fußballkultur, Gemeinschaft und Charakter.
                 </p>
               </AnimatedContent>
@@ -650,7 +436,7 @@ export default function Contact() {
                 delay={0.1}
               >
               <img
-                  src="abb2.jpeg"
+                  src="/abb2.jpeg"
                   alt="Portrait 2"
                   className="w-full h-auto object-cover rounded-lg aspect-[3/4]"
                 /></AnimatedContent>
@@ -690,7 +476,12 @@ export default function Contact() {
         </div>
 
         </section>
-        <div className="">
+
+        <div className="about-history-band">
+          <ClubHistory />
+        </div>
+
+        <div className="about-friends-band">
                 <AnimatedContent
                 distance={100}
                 direction="vertical"
@@ -707,9 +498,7 @@ export default function Contact() {
               </AnimatedContent>
           
           </div>
-        </main>
-        
-      )}
+        </div>
     </>
   );
 }
